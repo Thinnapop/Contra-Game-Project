@@ -2,6 +2,7 @@ package se233.contra.controller;
 
 import se233.contra.model.*;
 import se233.contra.model.entity.*;
+import se233.contra.model.entity.Character;
 import se233.contra.util.GameLogger;
 
 import java.util.List;
