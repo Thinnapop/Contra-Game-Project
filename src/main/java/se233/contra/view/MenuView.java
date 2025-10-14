@@ -16,7 +16,7 @@ public class MenuView {
     private Stage stage;
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
-    private int selectedButton = 0; // 0 = START GAME, 1 = EXIT
+    private int selectedButton = 0;
     private Button startButton;
     private Button exitButton;
 

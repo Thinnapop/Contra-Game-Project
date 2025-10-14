@@ -11,4 +11,5 @@ module se233.contra {
     exports se233.contra.model.entity;
     exports se233.contra.view;
     exports se233.contra.util;
+    exports se233.contra.exception;
 }

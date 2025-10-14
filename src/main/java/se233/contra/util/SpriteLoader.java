@@ -14,7 +14,7 @@ public class SpriteLoader {
     private static Map<String, List<Image>> animationCache = new HashMap<>();
 
     /**
-     * Load a single sprite image (existing method)
+     * Load a single sprite image
      */
     public static Image loadSprite(String path) throws SpriteLoadException {
         try {
@@ -143,10 +143,6 @@ public class SpriteLoader {
         animationCache.clear();
         GameLogger.info("Sprite cache cleared");
     }
-
-    /**
-     * Get cache statistics
-     */
     public static String getCacheStats() {
         return "Sprites cached: " + spriteCache.size() +
                 ", Animations cached: " + animationCache.size();
