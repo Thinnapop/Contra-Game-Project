@@ -801,3 +801,689 @@ java.lang.NullPointerException: Input stream must not be null
 	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
 	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
 	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:06:55.183 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Starting ===
+15:06:55.404 [JavaFX Application Thread] INFO  ContraGame - Menu displayed successfully
+15:06:57.873 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:06:57.886 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+15:06:58.437 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:06:58.438 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$2(MenuView.java:70)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processKeyEvent(Scene.java:2194)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2715)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:06:58.602 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:06:58.603 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$2(MenuView.java:70)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processKeyEvent(Scene.java:2194)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2715)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:06:59.219 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:06:59.220 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+15:07:30.255 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Starting ===
+15:07:30.480 [JavaFX Application Thread] INFO  ContraGame - Menu displayed successfully
+15:07:32.465 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:07:32.472 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+15:07:32.656 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:07:32.656 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+15:07:33.287 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:07:33.287 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$2(MenuView.java:70)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processKeyEvent(Scene.java:2194)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2715)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:07:33.421 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:07:33.421 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$2(MenuView.java:70)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processKeyEvent(Scene.java:2194)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2715)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:07:33.529 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:07:33.530 [JavaFX Application Thread] ERROR ContraGame - Failed to start game
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:35)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$2(MenuView.java:70)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processKeyEvent(Scene.java:2194)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.keyEvent(Scene.java:2715)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:218)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$KeyEventNotification.run(GlassViewEventHandler.java:150)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleKeyEvent$1(GlassViewEventHandler.java:250)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleKeyEvent(GlassViewEventHandler.java:249)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleKeyEvent(View.java:542)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyKey(View.java:966)
+15:08:04.428 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Starting ===
+15:08:04.654 [JavaFX Application Thread] INFO  ContraGame - Menu displayed successfully
+15:08:06.155 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+15:08:06.182 [JavaFX Application Thread] INFO  ContraGame - Loaded Boss 1
+15:08:06.182 [JavaFX Application Thread] INFO  ContraGame - Game initialized
+15:08:06.189 [JavaFX Application Thread] INFO  ContraGame - Game started successfully
+15:08:06.684 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:07.061 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:07.061 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:07.176 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:07.176 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:07.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:07.323 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:07.323 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:07.323 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:07.323 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:07.478 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:07.479 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:07.479 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:07.479 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:07.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:07.786 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:07.786 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:08.037 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:08.038 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:08.038 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:08.038 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:08.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:08.450 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:08.450 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:08.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:09.127 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:09.128 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:09.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:09.217 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 2
+15:08:09.218 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+15:08:09.218 [JavaFX Application Thread] WARN  ContraGame - Player collided with boss!
+15:08:09.485 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:09.485 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:09.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:09.775 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:09.776 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:09.946 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:09.946 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:09.946 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:09.946 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:10.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:10.431 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:10.431 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:10.431 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:10.431 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:10.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:10.944 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:10.944 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:10.979 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:10.980 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:10.980 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:11.067 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 1
+15:08:11.068 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+15:08:11.068 [JavaFX Application Thread] WARN  ContraGame - Player collided with boss!
+15:08:11.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:11.194 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:11.194 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:11.470 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:11.471 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:11.471 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:11.471 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:11.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:11.727 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:11.728 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:11.994 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:11.995 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:11.995 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:11.995 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:12.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:12.596 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:12.597 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:12.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:12.745 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:12.745 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:12.746 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:12.746 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:13.062 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:13.063 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:13.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:13.211 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:13.211 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:13.402 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:13.403 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:13.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:13.743 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:13.743 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:13.743 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:13.743 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:13.967 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:13.967 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:13.967 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:13.967 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:14.191 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:14.252 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:14.252 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:14.252 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:14.252 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:14.359 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:14.359 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:14.612 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:14.613 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:14.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:14.786 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:14.786 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:14.949 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:14.950 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:15.155 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:15.156 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:15.156 [JavaFX Application Thread] DEBUG ContraGame - Character prone
+15:08:15.156 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:15.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:15.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:15.995 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:15.995 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:16.176 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:16.177 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:16.177 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:16.177 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:16.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:16.540 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:16.540 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:16.679 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:16.680 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:16.680 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:16.680 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:16.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:17.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:17.336 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:17.336 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:17.396 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:17.396 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:17.396 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:17.396 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:17.691 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:18.073 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:18.073 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:18.159 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:18.159 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:18.159 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:18.159 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:18.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:18.577 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:18.577 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:18.577 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:18.577 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:18.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:18.802 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:18.802 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:18.959 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:18.959 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:18.959 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:19.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:19.466 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:19.466 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:19.609 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:19.610 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:19.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:20.192 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:20.692 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:20.826 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:20.826 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:21.049 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:21.049 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:21.049 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:21.049 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:21.208 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:21.541 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:21.541 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:21.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:22.201 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:22.599 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:22.599 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:22.678 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:22.679 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:22.679 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:22.679 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:22.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:23.201 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:23.341 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:23.342 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:23.458 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:23.459 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:23.459 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:23.459 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:23.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:24.000 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:24.000 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:24.052 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:24.052 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:24.052 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:24.052 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:24.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:24.507 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:24.507 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:24.587 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:24.587 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:24.587 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:24.587 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:24.701 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:25.033 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:25.033 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:25.033 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:25.034 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:25.148 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:25.149 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:25.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:25.428 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:25.431 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:25.431 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:25.431 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:25.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:25.977 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:25.977 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:26.188 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:26.188 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:26.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:26.410 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:26.410 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:26.410 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:26.410 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:26.652 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:26.653 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:26.653 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:26.701 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:26.768 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:26.768 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:26.768 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:27.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:27.214 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:27.215 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:27.215 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:27.215 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:27.585 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:27.585 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:27.701 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:27.721 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:27.721 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:27.722 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:27.722 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:28.121 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:28.121 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:28.122 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:28.122 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:28.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:28.365 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:28.365 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:28.586 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:28.586 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:28.587 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:28.587 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:28.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:28.963 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:28.963 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:28.963 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:29.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:29.220 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:29.220 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:29.392 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:29.392 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:29.392 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:29.392 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:29.700 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:29.821 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:29.821 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:30.105 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:30.105 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:30.106 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:30.106 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:30.200 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+15:08:30.401 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 0
+15:08:30.401 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+15:08:30.401 [JavaFX Application Thread] WARN  ContraGame - Player collided with boss!
+15:08:30.402 [JavaFX Application Thread] INFO  ContraGame - Game state changed to: GAME_OVER
+15:08:30.690 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:30.690 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:30.690 [JavaFX Application Thread] DEBUG ContraGame - Character jumped
+15:08:30.690 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:31.257 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:31.257 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:31.370 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:31.371 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:31.371 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:31.526 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:31.527 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:31.527 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:32.123 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:32.149 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:32.150 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:32.150 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:32.470 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:32.471 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:32.543 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:32.544 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:32.544 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:32.627 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:32.628 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:32.628 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:32.843 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:32.843 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:32.843 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:32.983 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:32.983 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:32.983 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:33.137 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:33.137 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:33.138 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:33.229 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:33.229 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:33.229 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:33.529 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:33.720 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:33.921 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:34.063 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:34.063 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:34.220 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:34.220 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:34.220 [JavaFX Application Thread] DEBUG ContraGame - Player prone
+15:08:34.353 [JavaFX Application Thread] DEBUG ContraGame - Character moving left
+15:08:34.353 [JavaFX Application Thread] DEBUG ContraGame - Player moved left
+15:08:34.576 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:34.710 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:34.710 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:34.710 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:48.998 [JavaFX Application Thread] DEBUG ContraGame - Character moving right
+15:08:48.999 [JavaFX Application Thread] DEBUG ContraGame - Player moved right
+15:08:49.354 [JavaFX Application Thread] DEBUG ContraGame - Player jumped
+15:08:51.703 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Stopping ===

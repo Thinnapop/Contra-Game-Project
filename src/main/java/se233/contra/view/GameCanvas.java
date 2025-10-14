@@ -32,7 +32,7 @@ public class GameCanvas {
         try {
             // Load initial background (Boss 1)
             currentBackground = new Image(
-                    getClass().getResourceAsStream("/se233.sprites/Defense Wall.png")
+                    getClass().getResourceAsStream("/backgrounds/BossStage1.png")
             );
 
             StackPane root = new StackPane(canvas);
