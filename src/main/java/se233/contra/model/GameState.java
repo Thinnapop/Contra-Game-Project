@@ -12,10 +12,10 @@ public class GameState {
     }
 
     private State currentState;
-    private int currentBossLevel; // 1, 2, or 3
+    private int currentBossLevel;
 
     public GameState() {
-        currentState = State.MENU;
+        currentState = State.PLAYING;
         currentBossLevel = 1;
     }
 

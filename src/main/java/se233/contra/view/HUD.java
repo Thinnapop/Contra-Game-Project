@@ -3,10 +3,10 @@ package se233.contra.view;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import se233.contra.model.Lives;
 import se233.contra.model.Score;
+import se233.contra.model.Lives;
 
-public class HUD { //Head up display
+public class HUD {
     private Score score;
     private Lives lives;
 

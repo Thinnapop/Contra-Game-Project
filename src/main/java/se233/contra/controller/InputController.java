@@ -3,6 +3,7 @@ package se233.contra.controller;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import se233.contra.util.GameLogger;
+import se233.contra.model.entity.Character;  // Add this import!
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +23,7 @@ public class InputController {
 
         scene.setOnKeyReleased(event -> {
             pressedKeys.remove(event.getCode());
+            handleInputRelease(event.getCode());
         });
     }
 
@@ -46,6 +48,31 @@ public class InputController {
         }
         if (pressedKeys.contains(KeyCode.SPACE)) {
             gameController.shoot();
+        }
+    }
+
+    private void handleInputRelease(KeyCode keyCode) {
+        Character player = gameController.getPlayer();
+
+        // Stop horizontal movement when keys released
+        if (keyCode == KeyCode.LEFT || keyCode == KeyCode.A ||
+                keyCode == KeyCode.RIGHT || keyCode == KeyCode.D) {
+            if (!pressedKeys.contains(KeyCode.LEFT) &&
+                    !pressedKeys.contains(KeyCode.A) &&
+                    !pressedKeys.contains(KeyCode.RIGHT) &&
+                    !pressedKeys.contains(KeyCode.D)) {
+                player.stopMoving();
+            }
+        }
+
+        // Stand up when down key released
+        if (keyCode == KeyCode.DOWN || keyCode == KeyCode.S) {
+            player.standUp();
+        }
+
+        // Stop shooting animation
+        if (keyCode == KeyCode.SPACE) {
+            player.stopShooting();
         }
     }
 }
