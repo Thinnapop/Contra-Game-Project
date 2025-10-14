@@ -20,6 +20,7 @@ public class GameController {
     private Lives lives;
     private GameState gameState;
     private CollisionController collisionController;
+    private List<Platform> platforms;
 
     public GameController() {
         initializeGame();
@@ -34,9 +35,19 @@ public class GameController {
         enemyBullets = new ArrayList<>();
         minions = new ArrayList<>();
         collisionController = new CollisionController();
+        platforms = new ArrayList<>();
+        createPlatforms();
 
         loadBoss(1); // Start with Boss 1
         GameLogger.info("Game initialized");
+    }
+    private void createPlatforms() {
+
+        platforms.add(new Platform(0, 540, 800, 60));
+
+        // Other platforms (change these numbers to match your level)
+        platforms.add(new Platform(500, 450, 200, 20));
+        platforms.add(new Platform(200, 400, 150, 20));
     }
 
     public void update() {
@@ -48,6 +59,7 @@ public class GameController {
         if (currentBoss != null) {
             currentBoss.update();
         }
+
 
         // Update bullets
         playerBullets.forEach(Bullet::update);

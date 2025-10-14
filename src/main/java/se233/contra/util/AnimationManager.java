@@ -23,6 +23,10 @@ public class AnimationManager {
             frameCounter = 0;
         }
     }
+    public void reset() {
+        currentFrame = 0;
+        frameCounter = 0;
+    }
 
     public Image getCurrentFrame() {
         return frames.get(currentFrame);

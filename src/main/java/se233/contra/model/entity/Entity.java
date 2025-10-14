@@ -14,10 +14,40 @@ public abstract class Entity {
 
     // Collision detection
     public boolean intersects(Entity other) {
-        return x < other.x + other.width &&
-                x + width > other.x &&
-                y < other.y + other.height &&
-                y + height > other.y;
+        double thisX, thisY, thisWidth, thisHeight;
+        double otherX, otherY, otherWidth, otherHeight;
+
+        // Use hitbox for Character, regular bounds for others
+        if (this instanceof Character) {
+            Character c = (Character) this;
+            thisX = c.getHitboxX();
+            thisY = c.getHitboxY();
+            thisWidth = c.getHitboxWidth();
+            thisHeight = c.getHitboxHeight();
+        } else {
+            thisX = this.x;
+            thisY = this.y;
+            thisWidth = this.width;
+            thisHeight = this.height;
+        }
+
+        if (other instanceof Character) {
+            Character c = (Character) other;
+            otherX = c.getHitboxX();
+            otherY = c.getHitboxY();
+            otherWidth = c.getHitboxWidth();
+            otherHeight = c.getHitboxHeight();
+        } else {
+            otherX = other.x;
+            otherY = other.y;
+            otherWidth = other.width;
+            otherHeight = other.height;
+        }
+
+        return thisX < otherX + otherWidth &&
+                thisX + thisWidth > otherX &&
+                thisY < otherY + otherHeight &&
+                thisY + thisHeight > otherY;
     }
 
     // Getters and Setters

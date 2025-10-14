@@ -18,12 +18,16 @@ public class Character extends Entity {
     private boolean isProne;
     private boolean isShooting;
     private double groundY;
-    private static final double GRAVITY = 0.4;
-    private static final double JUMP_STRENGTH = -12;
-    private static final double MOVE_SPEED = 3.5;
+    private static final double GRAVITY = 0.265;
+    private static final double JUMP_STRENGTH = -10;
+    private static final double MOVE_SPEED = 2;
     private int shootCooldown;
-    private static final int FIRE_RATE = 15;
+    private static final int FIRE_RATE = 30;
     private boolean facingRight;
+    private double hitboxWidth;
+    private double hitboxHeight;
+    private double hitboxOffsetX;  // Offset from sprite position
+    private double hitboxOffsetY;
 
     // Animation system
     private Map<String, AnimationManager> animations;
@@ -31,10 +35,10 @@ public class Character extends Entity {
 
     public Character(double x, double y) {
         this.x = x;
-        this.y = y;
-        this.groundY = y;
-        this.width = 40;
-        this.height = 60;
+        this.y = 440;
+        this.groundY = 440;
+        this.width = 125;
+        this.height = 145;
         this.lives = 3;
         this.velocityX = 0;
         this.velocityY = 0;
@@ -44,6 +48,10 @@ public class Character extends Entity {
         this.isShooting = false;
         this.facingRight = true;
         this.shootCooldown = 0;
+        this.hitboxWidth = 40;    // Smaller collision width
+        this.hitboxHeight = 60;   // Smaller collision height
+        this.hitboxOffsetX = 42;  // Center the hitbox
+        this.hitboxOffsetY = 40;
 
         loadAnimations();  // Changed from loadSprite()
         GameLogger.info("Character created at position: (" + x + ", " + y + ")");
@@ -53,15 +61,15 @@ public class Character extends Entity {
         animations = new HashMap<>();
 
         try {
-            String sheetPath = "/se233.sprites/character/character.png";
-            int frameWidth = 163;
-            int frameHeight = 164;
+            String sheetPath = "/se233/sprites/character/character.png";
+            int frameWidth = 165;
+            int frameHeight = 170;
 
             GameLogger.info("Loading character sprite sheet from: " + sheetPath);
 
             // Idle animation (first frame from row 0)
             List<Image> idleFrames = new ArrayList<>();
-            Image idleFrame = SpriteLoader.extractFrame(sheetPath, 0, 0, frameWidth, frameHeight);
+            Image idleFrame = SpriteLoader.extractFrame(sheetPath, 7, 0, frameWidth, frameHeight);
             if (idleFrame != null) {
                 idleFrames.add(idleFrame);
                 animations.put("idle", new AnimationManager(idleFrames, 10));
@@ -70,28 +78,31 @@ public class Character extends Entity {
                 GameLogger.error("Failed to load idle frame", null);
             }
 
-            // Running animation: row 1, columns 1-6 (6 frames)
-            List<Image> runFrames = SpriteLoader.extractFramesFromRow(sheetPath, 1, 1, 6, frameWidth, frameHeight);
+            // Running animation: row 0, columns 1-6 (6 frames)
+            List<Image> runFrames = SpriteLoader.extractFramesFromRow(sheetPath, 0, 7, 5, frameWidth, frameHeight);
             if (runFrames != null && !runFrames.isEmpty()) {
-                animations.put("run", new AnimationManager(runFrames, 5));
+                animations.put("run", new AnimationManager(runFrames, 12));
                 GameLogger.info("Run animation loaded: " + runFrames.size() + " frames");
             } else {
                 GameLogger.error("Failed to load run frames", null);
             }
 
-            // Jump animation: row 2, columns 13-16 (4 frames)
-            List<Image> jumpFrames = SpriteLoader.extractFramesFromRow(sheetPath, 2, 13, 4, frameWidth, frameHeight);
-            if (jumpFrames != null && !jumpFrames.isEmpty()) {
-                animations.put("jump", new AnimationManager(jumpFrames, 5));
-                GameLogger.info("Jump animation loaded: " + jumpFrames.size() + " frames");
+
+            // Jump animation: try row 2, columns 13-16 (4 frames)
+            List<Image> jumpFrames = SpriteLoader.extractFramesFromRow(sheetPath, 1, 12, 4, frameWidth, frameHeight);
+            if (jumpFrames != null) {
+                animations.put("jump", new AnimationManager(jumpFrames, 10));
+                GameLogger.info("Jump animation loaded (using idle frame): 1 frame");
             } else {
-                GameLogger.error("Failed to load jump frames", null);
+                GameLogger.error("Failed to load jump frame", null);
             }
 
-            // Prone animation: row 1, columns 15-16 (2 frames)
-            List<Image> proneFrames = SpriteLoader.extractFramesFromRow(sheetPath, 1, 15, 2, frameWidth, frameHeight);
+
+            // Prone animation: row 0, columns 15-16 (2 frames)
+            List<Image> proneFrames = SpriteLoader.extractFramesFromRow(sheetPath, 0, 14, 2, frameWidth, frameHeight);
             if (proneFrames != null && !proneFrames.isEmpty()) {
                 animations.put("prone", new AnimationManager(proneFrames, 8));
+                stopMoving();
                 GameLogger.info("Prone animation loaded: " + proneFrames.size() + " frames");
             } else {
                 GameLogger.error("Failed to load prone frames", null);
@@ -122,6 +133,10 @@ public class Character extends Entity {
 
         if (!newAnimation.equals(currentAnimation)) {
             currentAnimation = newAnimation;
+            // Reset the animation when switching
+            if (animations.containsKey(currentAnimation)) {
+                animations.get(currentAnimation).reset();
+            }
         }
     }
 
@@ -149,7 +164,7 @@ public class Character extends Entity {
         if (!isJumping && !isProne) {
             double oldHeight = height;
             isProne = true;
-            height = 25;
+            height = 145;
             y += (oldHeight - height);
             updateAnimation();
         }
@@ -159,7 +174,7 @@ public class Character extends Entity {
         if (isProne) {
             double oldHeight = height;
             isProne = false;
-            height = 60;
+            height = 140;
             y -= (height - oldHeight);
             updateAnimation();
         }
@@ -172,8 +187,20 @@ public class Character extends Entity {
         if (shootCooldown <= 0) {
             shootCooldown = FIRE_RATE;
             isShooting = true;
-            double bulletX = x + width;
-            double bulletY = isProne ? y + height / 3.1 : y + height / 3;
+
+            // Bullet spawns from gun position (not in front)
+            double bulletX, bulletY;
+
+            if (facingRight) {
+                // Facing right: gun is on right side of sprite
+                bulletX = x + 75;  // Gun barrel position (adjust this)
+                bulletY = isProne ? y + 80 : y + 55;  // Gun height
+            } else {
+                // Facing left: gun is on left side of sprite
+                bulletX = x + 50;  // Gun barrel position when flipped (adjust this)
+                bulletY = isProne ? y + 80 : y + 55;  // Gun height
+            }
+
             return new Bullet(bulletX, bulletY, facingRight ? 1 : -1, 0);
         }
         return null;
@@ -190,17 +217,20 @@ public class Character extends Entity {
 
     @Override
     public void update() {
-        // Update cooldown
         if (shootCooldown > 0) {
             shootCooldown--;
         }
-
         // Apply horizontal movement
         x += velocityX;
 
-        // Keep within bounds
-        if (x < 0) x = 0;
-        if (x > 800 - width) x = 800 - width;
+        double hitboxRight = getHitboxX() + hitboxWidth;
+
+        if (getHitboxX() < 0) {
+            x = -hitboxOffsetX;  // Stop at left edge
+        }
+        if (hitboxRight > 800) {
+            x = 800 - hitboxWidth - hitboxOffsetX;  // Stop at right edge
+        }
 
         // Apply gravity and jumping
         if (isJumping) {
@@ -228,29 +258,20 @@ public class Character extends Entity {
 
             if (currentFrame != null) {
                 gc.save();
-
                 if (!facingRight) {
-                    // Flip sprite when facing left
                     gc.scale(-1, 1);
                     gc.drawImage(currentFrame, -x - width, y, width, height);
                 } else {
                     gc.drawImage(currentFrame, x, y, width, height);
                 }
-
                 gc.restore();
-            }
-        } else {
-            // Fallback to rectangle if animations didn't load
-            gc.setFill(Color.BLUE);
-            gc.fillRect(x, y, width, height);
-            gc.setStroke(Color.WHITE);
-            gc.setLineWidth(2);
-            gc.strokeRect(x, y, width, height);
-        }
 
-        // Draw gun indicator
-        gc.setFill(Color.YELLOW);
-        gc.fillRect(x + width, y + height / 3, 10, 3);
+                // DEBUG: Draw the smaller hitbox (REMOVE THIS LATER)
+                gc.setStroke(Color.RED);
+                gc.setLineWidth(2);
+                gc.strokeRect(getHitboxX(), getHitboxY(), hitboxWidth, hitboxHeight);
+            }
+        }
     }
 
     public void respawn() {
@@ -277,4 +298,20 @@ public class Character extends Entity {
     public boolean isProne() {
         return isProne;
     }
+    public double getHitboxX() {
+        return x + hitboxOffsetX;
+    }
+
+    public double getHitboxY() {
+        return y + hitboxOffsetY;
+    }
+
+    public double getHitboxWidth() {
+        return hitboxWidth;
+    }
+
+    public double getHitboxHeight() {
+        return hitboxHeight;
+    }
+
 }
