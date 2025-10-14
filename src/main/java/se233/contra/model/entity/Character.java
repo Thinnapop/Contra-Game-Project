@@ -2,12 +2,8 @@ package se233.contra.model.entity;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import se233.contra.util.AnimationManager;
+import javafx.scene.paint.Color;
 import se233.contra.util.GameLogger;
-import se233.contra.util.SpriteLoader;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Character extends Entity {
     private int lives;
@@ -15,13 +11,14 @@ public class Character extends Entity {
     private boolean isProne;
     private boolean isShooting;
     private double groundY;
-    private static final double GRAVITY = 0.5;
+    private static final double GRAVITY = 0.4;
     private static final double JUMP_STRENGTH = -12;
-    private static final double MOVE_SPEED = 4;
+    private static final double MOVE_SPEED = 3.5;
+    private int shootCooldown;
+    private static final int FIRE_RATE = 15;
 
-    // Animation system
-    private Map<String, AnimationManager> animations;
-    private String currentAnimation;
+    // Sprite
+    private Image sprite;
     private boolean facingRight;
 
     public Character(double x, double y) {
@@ -29,7 +26,7 @@ public class Character extends Entity {
         this.y = y;
         this.groundY = y;
         this.width = 40;
-        this.height = 50;
+        this.height = 60;
         this.lives = 3;
         this.velocityX = 0;
         this.velocityY = 0;
@@ -38,119 +35,75 @@ public class Character extends Entity {
         this.isProne = false;
         this.isShooting = false;
         this.facingRight = true;
+        this.shootCooldown = 0;
 
-        loadAnimations();
-        currentAnimation = "idle";
+        loadSprite();
+        GameLogger.info("Character created at position: (" + x + ", " + y + ")");
     }
 
-    private void loadAnimations() {
-        animations = new HashMap<>();
-
+    private void loadSprite() {
         try {
-            String sheetPath = "/se233.sprites/character/character.png";
-            int frameWidth = 163;   // Adjust based on your sprite sheet
-            int frameHeight = 164;  // Adjust based on your sprite sheet
-
-            // Analyzing your sprite sheet:
-            // Row 0: Idle/Standing poses
-            // Row 1-2: Running animation
-            // Row 3: Jumping
-            // Row 4: Prone/Crouching
-            // Row 5-6: Shooting animations
-
-            // Idle animation (first few frames of row 0)
-            animations.put("idle", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 0, 0, 4, frameWidth, frameHeight),
-                    10
-            ));
-
-            // Running animation (rows 1-2)
-            animations.put("run", new AnimationManager(
-                    SpriteLoader.extractFramesFromRegion(sheetPath, 1, 1, 5, 1, frameWidth, frameHeight),
-                    5
-            ));
-
-            // Jumping animation (row 3)
-            animations.put("jump", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 3, 0, 10, frameWidth, frameHeight),
-                    8
-            ));
-
-            // Prone/Crouching (row 4)
-            animations.put("prone", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 4, 0, 8, frameWidth, frameHeight),
-                    10
-            ));
-
-            // Shooting while standing (row 5)
-            animations.put("shoot_stand", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 5, 0, 8, frameWidth, frameHeight),
-                    6
-            ));
-
-            // Shooting while running (row 6)
-            animations.put("shoot_run", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 6, 0, 10, frameWidth, frameHeight),
-                    5
-            ));
-
-            // Shooting while prone (row 7 if available)
-            animations.put("shoot_prone", new AnimationManager(
-                    SpriteLoader.extractFramesFromRow(sheetPath, 7, 0, 6, frameWidth, frameHeight),
-                    8
-            ));
-
-            GameLogger.info("Lance animations loaded successfully");
-            GameLogger.info(SpriteLoader.getCacheStats());
-
+            // Try to load the Lance sprite
+            sprite = new Image(
+                    getClass().getResourceAsStream("/se233.sprites/character/character.png")
+            );
+            GameLogger.info("Character sprite loaded successfully");
         } catch (Exception e) {
-            GameLogger.error("Failed to load Lance animations", e);
+            GameLogger.error("Failed to load character sprite", e);
+            sprite = null;
         }
     }
 
     public void moveLeft() {
         velocityX = -MOVE_SPEED;
         facingRight = false;
-        updateAnimation();
+        GameLogger.debug("Character moving left");
     }
 
     public void moveRight() {
         velocityX = MOVE_SPEED;
         facingRight = true;
-        updateAnimation();
+        GameLogger.debug("Character moving right");
     }
-    public void running(){
-        if()
-    }
+
 
     public void jump() {
         if (!isJumping && !isProne) {
             velocityY = JUMP_STRENGTH;
             isJumping = true;
-            updateAnimation();
+            GameLogger.debug("Character jumped");
         }
     }
 
     public void prone() {
-        if (!isJumping) {
+        if (!isJumping && !isProne) {
+            double oldHeight = height;
             isProne = true;
-            height = 25; // Crouch height
-            updateAnimation();
+            height = 25;
+            y += (oldHeight - height);  // Move DOWN to keep feet on ground
+            GameLogger.debug("Character prone");
         }
     }
 
     public void standUp() {
-        isProne = false;
-        height = 50;
-        updateAnimation();
+        if (isProne) {
+            double oldHeight = height;
+            isProne = false;
+            height = 60;  // Standing height
+            y -= (height - oldHeight);  // Move UP when standing
+        }
     }
 
     public Bullet shoot() {
-        if (!isShooting) {
+
+        if (isJumping) {
+            return null;
+        }
+        if (shootCooldown <= 0) {
+            shootCooldown = FIRE_RATE;
             isShooting = true;
-            updateAnimation();
             double bulletX = x + width;
-            double bulletY = isProne ? y + height / 2 : y + height / 3;
+            double bulletY = isProne ? y + height / 3.1 : y + height / 3;
             return new Bullet(bulletX, bulletY, facingRight ? 1 : -1, 0);
         }
         return null;
@@ -158,91 +111,72 @@ public class Character extends Entity {
 
     public void stopShooting() {
         isShooting = false;
-        updateAnimation();
     }
 
     public void stopMoving() {
         velocityX = 0;
-        updateAnimation();
-    }
-
-    private void updateAnimation() {
-        String newAnimation;
-
-        if (isProne) {
-            newAnimation = isShooting ? "shoot_prone" : "prone";
-        } else if (isJumping) {
-            newAnimation = "jump";
-        } else if (Math.abs(velocityX) > 0) {
-            newAnimation = isShooting ? "shoot_run" : "run";
-        } else {
-            newAnimation = isShooting ? "shoot_stand" : "idle";
-        }
-
-        if (!newAnimation.equals(currentAnimation)) {
-            currentAnimation = newAnimation;
-        }
     }
 
     @Override
     public void update() {
-        // Apply horizontal movement
+        if (shootCooldown > 0) {
+            shootCooldown--;
+        }
         x += velocityX;
 
-        // Keep within bounds
         if (x < 0) x = 0;
         if (x > 800 - width) x = 800 - width;
 
-        // Apply gravity
         if (isJumping) {
             velocityY += GRAVITY;
             y += velocityY;
 
-            // Land on ground
             if (y >= groundY) {
                 y = groundY;
                 velocityY = 0;
                 isJumping = false;
-                updateAnimation();
             }
-        }
-
-        // Update current animation
-        if (animations.containsKey(currentAnimation)) {
-            animations.get(currentAnimation).update();
         }
     }
 
     @Override
     public void render(GraphicsContext gc) {
-        if (active && animations.containsKey(currentAnimation)) {
-            Image currentFrame = animations.get(currentAnimation).getCurrentFrame();
-
-            if (currentFrame != null) {
+        if (active) {
+            if (sprite != null) {
+                // Draw the sprite
                 gc.save();
 
-                // Flip sprite if facing left
                 if (!facingRight) {
+                    // Flip sprite when facing left
                     gc.scale(-1, 1);
-                    gc.drawImage(currentFrame, -x - width, y, width, height);
+                    gc.drawImage(sprite, -x - width, y, width, height);
                 } else {
-                    gc.drawImage(currentFrame, x, y, width, height);
+                    gc.drawImage(sprite, x, y, width, height);
                 }
 
                 gc.restore();
+            } else {
+                // Fallback to rectangle if sprite didn't load
+                gc.setFill(Color.BLUE);
+                gc.fillRect(x, y, width, height);
+                gc.setStroke(Color.WHITE);
+                gc.setLineWidth(2);
+                gc.strokeRect(x, y, width, height);
             }
+
+            // Draw gun indicator
+            gc.setFill(Color.YELLOW);
+            gc.fillRect(x + width, y + height / 3, 10, 3);
         }
     }
 
     public void respawn() {
-        x = 0;
+        x = 100;
         y = groundY;
         velocityX = 0;
         velocityY = 0;
         isJumping = false;
         isProne = false;
-        isShooting = false;
-        currentAnimation = "idle";
         facingRight = true;
         GameLogger.info("Character respawned");
     }
