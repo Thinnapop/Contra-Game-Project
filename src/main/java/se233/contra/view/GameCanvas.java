@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import se233.contra.controller.GameController;
 import se233.contra.controller.InputController;
+import se233.contra.model.entity.DefenseWallBoss;
 import se233.contra.util.GameLogger;
 
 public class GameCanvas {
@@ -68,22 +69,27 @@ public class GameCanvas {
     }
 
     private void render() {
-        // Clear canvas
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        // Draw background
+        // 1. Draw background (lowest layer)
         if (currentBackground != null) {
             gc.drawImage(currentBackground, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         }
 
-        // Draw all game entities
+        // 2. Draw crack overlay (on top of background, but below game entities)
+        if (gameController.getCurrentBoss() instanceof DefenseWallBoss) {
+            DefenseWallBoss boss = (DefenseWallBoss) gameController.getCurrentBoss();
+            boss.renderCrackOverlay(gc, WINDOW_WIDTH, WINDOW_HEIGHT);
+        }
+
+        // 3. Draw all game entities (player, boss, bullets, HUD - highest layer)
         gameController.render(gc);
     }
 
     public void changeBackground(int bossLevel) {
         try {
-            String backgroundPath = "/images/backgrounds/boss" + bossLevel + "_background.png";
-            currentBackground = new Image(getClass().getResourceAsStream(backgroundPath));
+            String backgroundPath = "/images/backgrounds/windowless.png";
+            currentBackground = new Image(backgroundPath);
             GameLogger.info("Changed background to Boss " + bossLevel);
         } catch (Exception e) {
             GameLogger.error("Failed to load background for Boss " + bossLevel, e);

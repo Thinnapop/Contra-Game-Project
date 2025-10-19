@@ -82,14 +82,16 @@ public class GameController {
         minions.removeIf(m -> !m.isActive());
 
         // Check boss defeated
-        if (currentBoss != null && currentBoss.isDefeated()) {
+        // Check boss defeated
+        if (currentBoss != null && currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
             score.addScore(currentBoss.getScoreValue());
-
+            currentBoss.awardScore();  // Mark score as awarded
+            GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
 
             if (gameState.getCurrentBossLevel() > 3) {
                 gameState.setState(GameState.State.VICTORY);
             } else {
-                loadBoss(gameState.getCurrentBossLevel());
+               //
             }
         }
         if (!lives.hasLivesLeft()) {
@@ -153,5 +155,8 @@ public class GameController {
 
     public GameState getGameState() {
         return gameState;
+    }
+    public Boss getCurrentBoss() {
+        return currentBoss;
     }
 }

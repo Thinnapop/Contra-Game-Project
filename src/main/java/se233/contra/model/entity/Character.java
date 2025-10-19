@@ -86,9 +86,6 @@ public class Character extends Entity {
             } else {
                 GameLogger.error("Failed to load run frames", null);
             }
-
-
-            // Jump animation: try row 2, columns 13-16 (4 frames)
             List<Image> jumpFrames = SpriteLoader.extractFramesFromRow(sheetPath, 1, 12, 4, frameWidth, frameHeight);
             if (jumpFrames != null) {
                 animations.put("jump", new AnimationManager(jumpFrames, 10));
@@ -97,8 +94,6 @@ public class Character extends Entity {
                 GameLogger.error("Failed to load jump frame", null);
             }
 
-
-            // Prone animation: row 0, columns 15-16 (2 frames)
             List<Image> proneFrames = SpriteLoader.extractFramesFromRow(sheetPath, 0, 14, 2, frameWidth, frameHeight);
             if (proneFrames != null && !proneFrames.isEmpty()) {
                 animations.put("prone", new AnimationManager(proneFrames, 8));
@@ -221,7 +216,6 @@ public class Character extends Entity {
         double hitboxRight = getHitboxX() + hitboxWidth;
 
         for (Platform platform : platforms) {
-            // Check if character is above the platform and falling/standing on it
             if (hitboxRight > platform.x &&
                     hitboxLeft < platform.x + platform.width &&
                     hitboxBottom >= platform.y &&
@@ -288,16 +282,18 @@ public class Character extends Entity {
                 gc.restore();
 
                 // DEBUG: Draw the smaller hitbox (REMOVE THIS LATER)
-                gc.setStroke(Color.RED);
-                gc.setLineWidth(2);
-                gc.strokeRect(getHitboxX(), getHitboxY(), hitboxWidth, hitboxHeight);
+                //gc.setStroke(Color.RED);
+                //gc.setLineWidth(2);
+                //gc.strokeRect(getHitboxX(), getHitboxY(), hitboxWidth, hitboxHeight);
+
+
             }
         }
     }
 
     public void respawn() {
         x = 100;
-        y = groundY;
+        y = 400;
         velocityX = 0;
         velocityY = 0;
         isJumping = false;

@@ -8,6 +8,7 @@ public abstract class Boss extends Entity {
     protected int maxHealth;
     protected int scoreValue;
     protected boolean isDefeated;
+    protected boolean scoreAwarded;  // Add this flag
 
     public abstract void attack();
     public abstract void move();
@@ -22,6 +23,16 @@ public abstract class Boss extends Entity {
 
     public boolean isDefeated() {
         return health <= 0;
+    }
+
+    // Add this method
+    public boolean hasAwardedScore() {
+        return scoreAwarded;
+    }
+
+    // Add this method
+    public void awardScore() {
+        scoreAwarded = true;
     }
 
     public int getScoreValue() {
