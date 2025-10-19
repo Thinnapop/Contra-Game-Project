@@ -45,13 +45,13 @@ public class DefenseWallBoss extends Boss {
     public void render(GraphicsContext gc) {
         if (active && !isDefeated) {
             // Draw boss as gray rectangle (replace with sprite later)
-            gc.setFill(Color.GRAY);
+            /*gc.setFill(Color.GRAY);
             gc.fillRect(x, y, width, height);
 
             // Draw red outline
             gc.setStroke(Color.RED);
             gc.setLineWidth(3);
-            gc.strokeRect(x, y, width, height);
+            gc.strokeRect(x, y, width, height); */
 
             // Draw health bar
             double healthBarWidth = width * ((double) health / maxHealth);
@@ -59,6 +59,11 @@ public class DefenseWallBoss extends Boss {
             gc.fillRect(x, y - 10, width, 5);
             gc.setFill(Color.GREEN);
             gc.fillRect(x, y - 10, healthBarWidth, 5);
+        }
+    }
+    public void checkIfDefBossDefeated() {
+        if (this.health <= 0) {
+            GameLogger.debug("Boss 1 defeated");
         }
     }
 }

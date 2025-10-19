@@ -8,7 +8,7 @@ import se233.contra.model.entity.Character;
 import se233.contra.util.GameLogger;
 import se233.contra.view.HUD;
 import se233.contra.model.Platform;
-
+import se233.contra.model.entity.DefenseWallBoss;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +61,39 @@ public class GameController {
 
         if (currentBoss != null) {
             currentBoss.update();
+        }
+
+        // Update bullets
+        playerBullets.forEach(Bullet::update);
+        enemyBullets.forEach(EnemyBullet::update);
+        minions.forEach(Minion::update);
+
+        // Check collisions
+        if (currentBoss != null) {
+            collisionController.checkCollisions(
+                    player, currentBoss, playerBullets,
+                    enemyBullets, minions, score, lives
+            );
+        }
+
+        // Remove inactive entities
+        playerBullets.removeIf(b -> !b.isActive());
+        enemyBullets.removeIf(b -> !b.isActive());
+        minions.removeIf(m -> !m.isActive());
+
+        // Check boss defeated
+        if (currentBoss != null && currentBoss.isDefeated()) {
+            score.addScore(currentBoss.getScoreValue());
+
+
+            if (gameState.getCurrentBossLevel() > 3) {
+                gameState.setState(GameState.State.VICTORY);
+            } else {
+                loadBoss(gameState.getCurrentBossLevel());
+            }
+        }
+        if (!lives.hasLivesLeft()) {
+            gameState.setState(GameState.State.GAME_OVER);
         }
     }
 
