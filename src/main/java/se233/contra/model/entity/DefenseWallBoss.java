@@ -18,13 +18,9 @@ public class DefenseWallBoss extends Boss {
     private boolean isExploding;
     private boolean explosionFinished;
 
-    // Crack overlay
-    private Image crackOverlay;
-    private boolean showCrack;
-
     // Delay before removal
     private int removalDelayTimer;
-    private static final int REMOVAL_DELAY = 120;
+    private static final int REMOVAL_DELAY = 120;  // 2 seconds
     private boolean movedOffScreen;
 
     // Explosion size
@@ -47,10 +43,8 @@ public class DefenseWallBoss extends Boss {
         this.scoreAwarded = false;
         this.removalDelayTimer = 0;
         this.movedOffScreen = false;
-        this.showCrack = false;
 
         loadExplosionAnimation();
-        loadCrackOverlay();
     }
 
     private void loadExplosionAnimation() {
@@ -63,7 +57,10 @@ public class DefenseWallBoss extends Boss {
             List<Image> explosionFrames = SpriteLoader.extractFramesFromRow(
                     explosionPath,
                     0,
-                    0, frameCount, frameWidth, frameHeight
+                    0,
+                    frameCount,
+                    frameWidth,
+                    frameHeight
             );
 
             if (explosionFrames != null && !explosionFrames.isEmpty()) {
@@ -76,16 +73,6 @@ public class DefenseWallBoss extends Boss {
         }
     }
 
-    private void loadCrackOverlay() {
-        try {
-            String crackPath = "/se233/background/windowless.png";
-            crackOverlay = new Image(getClass().getResourceAsStream(crackPath));
-            GameLogger.info("Crack overlay loaded successfully");
-        } catch (Exception e) {
-            GameLogger.error("Failed to load crack overlay", e);
-        }
-    }
-
     @Override
     public void takeDamage(int damage) {
         super.takeDamage(damage);
@@ -95,8 +82,7 @@ public class DefenseWallBoss extends Boss {
     public void checkIfDefBossDefeated() {
         if (this.health <= 0 && !isExploding) {
             isExploding = true;
-            showCrack = true;  // Show crack immediately when defeated
-            GameLogger.info("Defense Wall Boss defeated! Starting explosion and showing crack...");
+            GameLogger.info("Defense Wall Boss defeated! Starting explosion...");
         }
     }
 
@@ -113,6 +99,7 @@ public class DefenseWallBoss extends Boss {
     @Override
     public void update() {
         if (isExploding) {
+            // Update explosion animation
             if (explosionAnimation != null && !explosionFinished) {
                 explosionAnimation.update();
 
@@ -122,6 +109,7 @@ public class DefenseWallBoss extends Boss {
                 }
             }
 
+            // Wait before removing boss
             if (explosionFinished && !movedOffScreen) {
                 removalDelayTimer++;
 
@@ -134,6 +122,7 @@ public class DefenseWallBoss extends Boss {
                 }
             }
         } else {
+            // Normal boss behavior
             attackTimer++;
             if (attackTimer >= attackCooldown) {
                 attack();
@@ -145,6 +134,7 @@ public class DefenseWallBoss extends Boss {
     @Override
     public void render(GraphicsContext gc) {
         if (active || isExploding) {
+            // Render explosion animation
             if (isExploding && !explosionFinished && explosionAnimation != null) {
                 Image currentFrame = explosionAnimation.getCurrentFrame();
                 if (currentFrame != null) {
@@ -153,7 +143,9 @@ public class DefenseWallBoss extends Boss {
 
                     gc.drawImage(currentFrame, explosionX, explosionY, EXPLOSION_WIDTH, EXPLOSION_HEIGHT);
                 }
-            } else if (!isDefeated && !isExploding) {
+            }
+            // Render health bar when boss is active and not exploding
+            else if (!isDefeated && !isExploding) {
                 double healthBarWidth = width * ((double) health / maxHealth);
                 gc.setFill(Color.RED);
                 gc.fillRect(x, y - 10, width, 5);
@@ -161,16 +153,5 @@ public class DefenseWallBoss extends Boss {
                 gc.fillRect(x, y - 10, healthBarWidth, 5);
             }
         }
-    }
-
-    // Method to render crack overlay on top of background
-    public void renderCrackOverlay(GraphicsContext gc, double canvasWidth, double canvasHeight) {
-        if (showCrack && crackOverlay != null) {
-            gc.drawImage(crackOverlay, 0, 0, canvasWidth, canvasHeight);
-        }
-    }
-
-    public boolean shouldShowCrack() {
-        return showCrack;
     }
 }

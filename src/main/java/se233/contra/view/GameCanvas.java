@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import se233.contra.controller.GameController;
 import se233.contra.controller.InputController;
-import se233.contra.model.entity.DefenseWallBoss;
 import se233.contra.util.GameLogger;
 
 public class GameCanvas {
@@ -19,6 +18,7 @@ public class GameCanvas {
     private GameController gameController;
     private AnimationTimer gameLoop;
     private Image currentBackground;
+    private int currentBossLevel;  // ✅ Track current boss level
 
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
@@ -27,14 +27,13 @@ public class GameCanvas {
         this.stage = stage;
         this.canvas = new Canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.gc = canvas.getGraphicsContext2D();
+        this.currentBossLevel = 1;  // ✅ Initialize
     }
 
     public void show() {
         try {
             // Load initial background (Boss 1)
-            currentBackground = new Image(
-                    getClass().getResourceAsStream("/backgrounds/BossStage1.png")
-            );
+            loadBackground(1);
 
             StackPane root = new StackPane(canvas);
             Scene scene = new Scene(root);
@@ -66,31 +65,48 @@ public class GameCanvas {
 
     private void update() {
         gameController.update();
+
+        // ✅ Check if boss level changed and update background
+        int newBossLevel = gameController.getCurrentBossLevel();
+        if (newBossLevel != currentBossLevel) {
+            currentBossLevel = newBossLevel;
+            loadBackground(currentBossLevel);
+        }
     }
 
     private void render() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        // 1. Draw background (lowest layer)
+        // Draw background
         if (currentBackground != null) {
             gc.drawImage(currentBackground, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
         }
 
-        // 2. Draw crack overlay (on top of background, but below game entities)
-        if (gameController.getCurrentBoss() instanceof DefenseWallBoss) {
-            DefenseWallBoss boss = (DefenseWallBoss) gameController.getCurrentBoss();
-            boss.renderCrackOverlay(gc, WINDOW_WIDTH, WINDOW_HEIGHT);
-        }
-
-        // 3. Draw all game entities (player, boss, bullets, HUD - highest layer)
+        // Draw all game entities
         gameController.render(gc);
     }
 
-    public void changeBackground(int bossLevel) {
+    // ✅ Load background based on boss level
+    private void loadBackground(int bossLevel) {
         try {
-            String backgroundPath = "/images/backgrounds/windowless.png";
-            currentBackground = new Image(backgroundPath);
-            GameLogger.info("Changed background to Boss " + bossLevel);
+            String backgroundPath;
+            switch (bossLevel) {
+                case 1:
+                    backgroundPath = "/backgrounds/BossStage1.png";
+                    break;
+                case 2:
+                    // Use the alien boss background you uploaded
+                    backgroundPath = "/backgrounds/BossStage2.png";  // Put your alien boss image here
+                    break;
+                case 3:
+                    backgroundPath = "/backgrounds/BossStage3.png";
+                    break;
+                default:
+                    backgroundPath = "/backgrounds/BossStage1.png";
+            }
+
+            currentBackground = new Image(getClass().getResourceAsStream(backgroundPath));
+            GameLogger.info("Loaded background for Boss " + bossLevel);
         } catch (Exception e) {
             GameLogger.error("Failed to load background for Boss " + bossLevel, e);
         }

@@ -23,6 +23,8 @@ public class GameController {
     private GameState gameState;
     private CollisionController collisionController;
     private List<Platform> platforms;
+    private CrackWall crackWall;
+    private boolean canTransition;  // ✅ Add this flag
 
     public GameController() {
         initializeGame();
@@ -40,15 +42,28 @@ public class GameController {
         platforms = new ArrayList<>();
         createPlatformsBoss1();
 
-        loadBoss(1); // Start with Boss 1
+        // ✅ FIX: Make crack wall only cover the right wall area, not entire screen
+        crackWall = new CrackWall(700, 0, 100, 600);  // Right side wall only
+
+        canTransition = false;
+
+        loadBoss(1);
         GameLogger.info("Game initialized");
     }
+
     private void createPlatformsBoss1() {
-        platforms.add(new Platform(0, 540, 800, 60));// Main ground
+        platforms.add(new Platform(0, 540, 800, 60));
         platforms.add(new Platform(80, 420, 240, 20));
         platforms.add(new Platform(320, 380, 70, 20));
         platforms.add(new Platform(0, 284, 320, 20));
         platforms.add(new Platform(400, 460, 70, 20));
+    }
+
+    private void createPlatformsBoss2() {
+        // ✅ Define platforms for Boss 2 stage
+        platforms.clear();
+        platforms.add(new Platform(0, 540, 800, 60));  // Main ground
+        // Add more platforms as needed for boss 2
     }
 
     public void update() {
@@ -68,6 +83,13 @@ public class GameController {
         enemyBullets.forEach(EnemyBullet::update);
         minions.forEach(Minion::update);
 
+        // Check crack wall collision (only if it has collision)
+        if (crackWall != null && crackWall.hasCollision() && player.intersects(crackWall)) {
+            lives.loseLife();
+            player.respawn();
+            GameLogger.warn("Player hit the wall!");
+        }
+
         // Check collisions
         if (currentBoss != null) {
             collisionController.checkCollisions(
@@ -81,21 +103,58 @@ public class GameController {
         enemyBullets.removeIf(b -> !b.isActive());
         minions.removeIf(m -> !m.isActive());
 
-        // Check boss defeated
-        // Check boss defeated
+        // Check boss defeated and reveal crack
         if (currentBoss != null && currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
             score.addScore(currentBoss.getScoreValue());
-            currentBoss.awardScore();  // Mark score as awarded
-            GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
+            currentBoss.awardScore();
 
-            if (gameState.getCurrentBossLevel() > 3) {
-                gameState.setState(GameState.State.VICTORY);
-            } else {
-               //
+            // Reveal the crack wall
+            if (crackWall != null && !crackWall.isVisible()) {
+                crackWall.revealCrack();
+                canTransition = true;  // ✅ Allow transition to next stage
             }
+
+            GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
         }
+
+        // ✅ Check if player reached right edge and can transition
+        if (canTransition && player.getX() >= 750) {  // Near right edge
+            transitionToNextBoss();
+        }
+
         if (!lives.hasLivesLeft()) {
             gameState.setState(GameState.State.GAME_OVER);
+        }
+    }
+
+    // ✅ Add transition method
+    private void transitionToNextBoss() {
+        canTransition = false;  // Prevent multiple transitions
+
+        int nextLevel = gameState.getCurrentBossLevel() + 1;
+        gameState.nextBoss();
+
+        if (nextLevel <= 3) {
+            // Clear current entities
+            playerBullets.clear();
+            enemyBullets.clear();
+            minions.clear();
+
+            // Reset player position
+            player.setX(100);
+            player.setY(400);
+
+            // Load next boss and platforms
+            loadBoss(nextLevel);
+
+            if (nextLevel == 2) {
+                createPlatformsBoss2();
+                crackWall = null;  // No crack wall for boss 2
+            }
+
+            GameLogger.info("Transitioning to Boss " + nextLevel);
+        } else {
+            gameState.setState(GameState.State.VICTORY);
         }
     }
 
@@ -115,7 +174,11 @@ public class GameController {
     }
 
     public void render(GraphicsContext gc) {
-        //renderPlatforms(gc);
+        // Render crack wall if it exists
+        if (crackWall != null) {
+            crackWall.render(gc);
+        }
+
         player.render(gc);
         if (currentBoss != null) {
             currentBoss.render(gc);
@@ -128,18 +191,6 @@ public class GameController {
         hud.render(gc);
     }
 
-    /* private void renderPlatforms(GraphicsContext gc) {
-        for (Platform platform : platforms) {
-            gc.setFill(Color.rgb(139, 69, 19, 0.8)); // Brown semi-transparent
-            gc.fillRect(platform.x, platform.y, platform.width, platform.height);
-
-            // Add a border
-            gc.setStroke(Color.rgb(101, 67, 33));
-            gc.setLineWidth(2);
-            gc.strokeRect(platform.x, platform.y, platform.width, platform.height);
-        }
-    } */
-
     public void shoot() {
         Bullet bullet = player.shoot();
         if (bullet != null) {
@@ -148,7 +199,6 @@ public class GameController {
         }
     }
 
-    // Add this getter method!
     public Character getPlayer() {
         return player;
     }
@@ -156,7 +206,13 @@ public class GameController {
     public GameState getGameState() {
         return gameState;
     }
+
     public Boss getCurrentBoss() {
         return currentBoss;
+    }
+
+    // ✅ Add getter for current boss level
+    public int getCurrentBossLevel() {
+        return gameState.getCurrentBossLevel();
     }
 }
