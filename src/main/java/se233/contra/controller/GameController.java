@@ -1,11 +1,13 @@
 package se233.contra.controller;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import se233.contra.model.*;
 import se233.contra.model.entity.*;
 import se233.contra.model.entity.Character;
 import se233.contra.util.GameLogger;
 import se233.contra.view.HUD;
+import se233.contra.model.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,18 +38,17 @@ public class GameController {
         minions = new ArrayList<>();
         collisionController = new CollisionController();
         platforms = new ArrayList<>();
-        createPlatforms();
+        createPlatformsBoss1();
 
         loadBoss(1); // Start with Boss 1
         GameLogger.info("Game initialized");
     }
-    private void createPlatforms() {
-
-        platforms.add(new Platform(0, 540, 800, 60));
-
-        // Other platforms (change these numbers to match your level)
-        platforms.add(new Platform(500, 450, 200, 20));
-        platforms.add(new Platform(200, 400, 150, 20));
+    private void createPlatformsBoss1() {
+        platforms.add(new Platform(0, 540, 800, 60));// Main ground
+        platforms.add(new Platform(80, 420, 240, 20));
+        platforms.add(new Platform(320, 380, 70, 20));
+        platforms.add(new Platform(0, 284, 320, 20));
+        platforms.add(new Platform(400, 460, 70, 20));
     }
 
     public void update() {
@@ -56,44 +57,10 @@ public class GameController {
         }
 
         player.update();
+        player.checkPlatformCollision(platforms);
+
         if (currentBoss != null) {
             currentBoss.update();
-        }
-
-
-        // Update bullets
-        playerBullets.forEach(Bullet::update);
-        enemyBullets.forEach(EnemyBullet::update);
-        minions.forEach(Minion::update);
-
-        // Check collisions
-        if (currentBoss != null) {
-            collisionController.checkCollisions(
-                    player, currentBoss, playerBullets,
-                    enemyBullets, minions, score, lives
-            );
-        }
-
-        // Remove inactive entities
-        playerBullets.removeIf(b -> !b.isActive());
-        enemyBullets.removeIf(b -> !b.isActive());
-        minions.removeIf(m -> !m.isActive());
-
-        // Check boss defeated
-        if (currentBoss != null && currentBoss.isDefeated()) {
-            score.addScore(currentBoss.getScoreValue());
-            gameState.nextBoss();
-
-            if (gameState.getCurrentBossLevel() > 3) {
-                gameState.setState(GameState.State.VICTORY);
-            } else {
-                loadBoss(gameState.getCurrentBossLevel());
-            }
-        }
-
-        // Check game over
-        if (!lives.hasLivesLeft()) {
-            gameState.setState(GameState.State.GAME_OVER);
         }
     }
 
@@ -113,7 +80,7 @@ public class GameController {
     }
 
     public void render(GraphicsContext gc) {
-        // Render all game entities
+        //renderPlatforms(gc);
         player.render(gc);
         if (currentBoss != null) {
             currentBoss.render(gc);
@@ -122,10 +89,21 @@ public class GameController {
         enemyBullets.forEach(b -> b.render(gc));
         minions.forEach(m -> m.render(gc));
 
-        // Render HUD
         HUD hud = new HUD(score, lives);
         hud.render(gc);
     }
+
+    /* private void renderPlatforms(GraphicsContext gc) {
+        for (Platform platform : platforms) {
+            gc.setFill(Color.rgb(139, 69, 19, 0.8)); // Brown semi-transparent
+            gc.fillRect(platform.x, platform.y, platform.width, platform.height);
+
+            // Add a border
+            gc.setStroke(Color.rgb(101, 67, 33));
+            gc.setLineWidth(2);
+            gc.strokeRect(platform.x, platform.y, platform.width, platform.height);
+        }
+    } */
 
     public void shoot() {
         Bullet bullet = player.shoot();

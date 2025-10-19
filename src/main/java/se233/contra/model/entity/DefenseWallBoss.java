@@ -9,10 +9,10 @@ public class DefenseWallBoss extends Boss {
     private int attackTimer;
 
     public DefenseWallBoss(double x, double y) {
-        this.x = x;
-        this.y = y;
-        this.width = 100;
-        this.height = 120;
+        this.x = 540;
+        this.y = 410;
+        this.width = 80;
+        this.height = 80;
         this.health = 100;
         this.maxHealth = 100;
         this.scoreValue = 2;

@@ -1,12 +1,12 @@
 package se233.contra.model.entity;
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import se233.contra.util.AnimationManager;
 import se233.contra.util.GameLogger;
 import se233.contra.util.SpriteLoader;
-
+import se233.contra.model.Platform;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,8 +35,8 @@ public class Character extends Entity {
 
     public Character(double x, double y) {
         this.x = x;
-        this.y = 440;
-        this.groundY = 440;
+        this.y = 400;
+        this.groundY = 540;
         this.width = 125;
         this.height = 145;
         this.lives = 3;
@@ -187,12 +187,10 @@ public class Character extends Entity {
         if (shootCooldown <= 0) {
             shootCooldown = FIRE_RATE;
             isShooting = true;
-
-            // Bullet spawns from gun position (not in front)
             double bulletX, bulletY;
 
             if (facingRight) {
-                // Facing right: gun is on right side of sprite
+
                 bulletX = x + 75;  // Gun barrel position (adjust this)
                 bulletY = isProne ? y + 80 : y + 55;  // Gun height
             } else {
@@ -214,12 +212,43 @@ public class Character extends Entity {
         velocityX = 0;
         updateAnimation();
     }
+    public void checkPlatformCollision(List<Platform> platforms) {
+        boolean onPlatform = false;
 
+        // Get character's hitbox bottom
+        double hitboxBottom = getHitboxY() + hitboxHeight;
+        double hitboxLeft = getHitboxX();
+        double hitboxRight = getHitboxX() + hitboxWidth;
+
+        for (Platform platform : platforms) {
+            // Check if character is above the platform and falling/standing on it
+            if (hitboxRight > platform.x &&
+                    hitboxLeft < platform.x + platform.width &&
+                    hitboxBottom >= platform.y &&
+                    hitboxBottom <= platform.y + 15 && // Small threshold for landing
+                    velocityY >= 0) { // Only when falling or standing
+
+                // Land on platform
+                y = platform.y - hitboxHeight - hitboxOffsetY;
+                velocityY = 0;
+                isJumping = false;
+                onPlatform = true;
+                updateAnimation();
+                break;
+            }
+        }
+
+        // If not on any platform and not already jumping, start falling
+        if (!onPlatform && !isJumping) {
+            isJumping = true;
+        }
+    }
     @Override
     public void update() {
         if (shootCooldown > 0) {
             shootCooldown--;
         }
+
         // Apply horizontal movement
         x += velocityX;
 
@@ -232,17 +261,10 @@ public class Character extends Entity {
             x = 800 - hitboxWidth - hitboxOffsetX;  // Stop at right edge
         }
 
-        // Apply gravity and jumping
+        // Apply gravity (always apply when in air)
         if (isJumping) {
             velocityY += GRAVITY;
             y += velocityY;
-
-            if (y >= groundY) {
-                y = groundY;
-                velocityY = 0;
-                isJumping = false;
-                updateAnimation();
-            }
         }
 
         // Update current animation frames
@@ -250,7 +272,6 @@ public class Character extends Entity {
             animations.get(currentAnimation).update();
         }
     }
-
     @Override
     public void render(GraphicsContext gc) {
         if (active && animations != null && animations.containsKey(currentAnimation)) {
