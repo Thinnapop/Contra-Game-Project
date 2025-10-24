@@ -1,4 +1,5 @@
 package se233.contra.model.entity;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -6,7 +7,6 @@ import se233.contra.util.AnimationManager;
 import se233.contra.util.GameLogger;
 import se233.contra.util.SpriteLoader;
 import se233.contra.model.Platform;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ public class Character extends Entity {
     private static final double JUMP_STRENGTH = -10;
     private static final double MOVE_SPEED = 2;
     private int shootCooldown;
-    private static final int FIRE_RATE = 30;
+    private static final int FIRE_RATE = 10;
     private boolean facingRight;
     private double hitboxWidth;
     private double hitboxHeight;
@@ -176,22 +176,25 @@ public class Character extends Entity {
     }
 
     public Bullet shoot() {
-        if (isJumping) {
-            return null;
-        }
         if (shootCooldown <= 0) {
             shootCooldown = FIRE_RATE;
             isShooting = true;
             double bulletX, bulletY;
 
             if (facingRight) {
-
-                bulletX = x + 75;  // Gun barrel position (adjust this)
-                bulletY = isProne ? y + 80 : y + 55;  // Gun height
+                bulletX = x + 75;
+                if (isJumping) {
+                    bulletY = y + 55;  // Jumping
+                } else {
+                    bulletY = isProne ? y + 80 : y + 55;  // Prone or standing
+                }
             } else {
-                // Facing left: gun is on left side of sprite
-                bulletX = x + 50;  // Gun barrel position when flipped (adjust this)
-                bulletY = isProne ? y + 80 : y + 55;  // Gun height
+                bulletX = x + 50;
+                if (isJumping) {
+                    bulletY = y + 55;  // Jumping
+                } else {
+                    bulletY = isProne ? y + 80 : y + 55;  // Prone or standing
+                }
             }
 
             return new Bullet(bulletX, bulletY, facingRight ? 1 : -1, 0);

@@ -3,7 +3,7 @@ package se233.contra.controller;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import se233.contra.util.GameLogger;
-import se233.contra.model.entity.Character;  // Add this import!
+import se233.contra.model.entity.Character;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,6 +37,7 @@ public class InputController {
         boolean crouching = pressedKeys.contains(KeyCode.DOWN) || pressedKeys.contains(KeyCode.S);
         boolean shooting = pressedKeys.contains(KeyCode.SPACE);
 
+        // Handle movement
         if (movingLeft && movingRight) {
             player.stopMoving();
         } else if (movingLeft) {
@@ -46,6 +47,8 @@ public class InputController {
         } else {
             player.stopMoving();
         }
+
+        // Handle jump
         if (jumping) {
             player.jump();
         }
@@ -55,9 +58,9 @@ public class InputController {
             player.prone();
         }
 
-        // Handle shooting
+        // ✅ Handle shooting - continuous fire when holding SPACE
         if (shooting) {
-            gameController.shoot();
+            gameController.shoot();  // Called every frame, cooldown managed in Character
         }
     }
 
@@ -74,15 +77,16 @@ public class InputController {
                     !pressedKeys.contains(KeyCode.RIGHT) &&
                     !pressedKeys.contains(KeyCode.D)) {
 
-                player.stopMoving();  // ✅ Stop only when all keys released
+                player.stopMoving();
             }
         }
+
         // Stand up when down key released
         if (keyCode == KeyCode.DOWN || keyCode == KeyCode.S) {
             player.standUp();
         }
 
-        // Stop shooting animation
+        // Stop shooting animation when SPACE released
         if (keyCode == KeyCode.SPACE) {
             player.stopShooting();
         }

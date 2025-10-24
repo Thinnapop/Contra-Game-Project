@@ -24,7 +24,7 @@ public class GameController {
     private CollisionController collisionController;
     private List<Platform> platforms;
     private CrackWall crackWall;
-    private boolean canTransition;  // ✅ Add this flag
+    private boolean canTransition;
 
     public GameController() {
         initializeGame();
@@ -42,8 +42,7 @@ public class GameController {
         platforms = new ArrayList<>();
         createPlatformsBoss1();
 
-        // ✅ FIX: Make crack wall only cover the right wall area, not entire screen
-        crackWall = new CrackWall(700, 0, 100, 600);  // Right side wall only
+        crackWall = new CrackWall(500, 0, 100, 600);
 
         canTransition = false;
 
@@ -60,9 +59,8 @@ public class GameController {
     }
 
     private void createPlatformsBoss2() {
-        // ✅ Define platforms for Boss 2 stage
         platforms.clear();
-        platforms.add(new Platform(0, 540, 800, 60));  // Main ground
+        platforms.add(new Platform(50, 500, 800, 60));  // Main ground
         // Add more platforms as needed for boss 2
     }
 
@@ -111,14 +109,13 @@ public class GameController {
             // Reveal the crack wall
             if (crackWall != null && !crackWall.isVisible()) {
                 crackWall.revealCrack();
-                canTransition = true;  // ✅ Allow transition to next stage
+                canTransition = true;
             }
 
             GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
         }
 
-        // ✅ Check if player reached right edge and can transition
-        if (canTransition && player.getX() >= 750) {  // Near right edge
+        if (canTransition && player.getX() >= 700) {
             transitionToNextBoss();
         }
 
@@ -127,9 +124,8 @@ public class GameController {
         }
     }
 
-    // ✅ Add transition method
     private void transitionToNextBoss() {
-        canTransition = false;  // Prevent multiple transitions
+        canTransition = false;
 
         int nextLevel = gameState.getCurrentBossLevel() + 1;
         gameState.nextBoss();
@@ -140,9 +136,10 @@ public class GameController {
             enemyBullets.clear();
             minions.clear();
 
-            // Reset player position
+            // ✅ Reset player position to spawn point
             player.setX(100);
-            player.setY(400);
+            player.setY(350);
+            player.respawn();  // Reset all player states
 
             // Load next boss and platforms
             loadBoss(nextLevel);
@@ -150,6 +147,10 @@ public class GameController {
             if (nextLevel == 2) {
                 createPlatformsBoss2();
                 crackWall = null;  // No crack wall for boss 2
+                GameLogger.info("Transitioned to Boss 2 - Alien stage loaded!");
+            } else if (nextLevel == 3) {
+                // Add platforms for boss 3 if needed
+                crackWall = null;
             }
 
             GameLogger.info("Transitioning to Boss " + nextLevel);
@@ -211,7 +212,6 @@ public class GameController {
         return currentBoss;
     }
 
-    // ✅ Add getter for current boss level
     public int getCurrentBossLevel() {
         return gameState.getCurrentBossLevel();
     }
