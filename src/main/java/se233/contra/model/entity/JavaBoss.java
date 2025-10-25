@@ -52,7 +52,7 @@ public class JavaBoss extends Boss {
             String spritePath = "/se233/sprites/bosses/java.png";
             int frameWidth = 102;
             int frameHeight = 113;
-            int frameCount = 3;
+            int frameCount = 2;
 
             List<Image> frames = SpriteLoader.extractFramesFromRow(
                     spritePath, 0, 0, frameCount, frameWidth, frameHeight

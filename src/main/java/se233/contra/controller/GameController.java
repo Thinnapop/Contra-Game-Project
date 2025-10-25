@@ -18,6 +18,7 @@ public class GameController {
     private List<Bullet> playerBullets;
     private List<EnemyBullet> enemyBullets;
     private List<Minion> minions;
+    private List<HitEffect> hitEffects; // ✅ Added
     private Score score;
     private Lives lives;
     private GameState gameState;
@@ -38,6 +39,7 @@ public class GameController {
         playerBullets = new ArrayList<>();
         enemyBullets = new ArrayList<>();
         minions = new ArrayList<>();
+        hitEffects = new ArrayList<>(); // ✅ Initialize hit effects list
         collisionController = new CollisionController();
         platforms = new ArrayList<>();
         createPlatformsBoss1();
@@ -80,6 +82,7 @@ public class GameController {
         playerBullets.forEach(Bullet::update);
         enemyBullets.forEach(EnemyBullet::update);
         minions.forEach(Minion::update);
+        hitEffects.forEach(HitEffect::update); // ✅ Update hit effects
 
         // Check crack wall collision (only if it has collision)
         if (crackWall != null && crackWall.hasCollision() && player.intersects(crackWall)) {
@@ -92,7 +95,8 @@ public class GameController {
         if (currentBoss != null) {
             collisionController.checkCollisions(
                     player, currentBoss, playerBullets,
-                    enemyBullets, minions, score, lives
+                    enemyBullets, minions, hitEffects, // ✅ Pass hit effects
+                    score, lives
             );
         }
 
@@ -100,6 +104,7 @@ public class GameController {
         playerBullets.removeIf(b -> !b.isActive());
         enemyBullets.removeIf(b -> !b.isActive());
         minions.removeIf(m -> !m.isActive());
+        hitEffects.removeIf(e -> e.isFinished()); // ✅ Remove finished effects
 
         // Check boss defeated and reveal crack
         if (currentBoss != null && currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
@@ -135,6 +140,7 @@ public class GameController {
             playerBullets.clear();
             enemyBullets.clear();
             minions.clear();
+            hitEffects.clear(); // ✅ Clear hit effects
 
             // ✅ Reset player position to spawn point
             player.setX(100);
@@ -187,6 +193,7 @@ public class GameController {
         playerBullets.forEach(b -> b.render(gc));
         enemyBullets.forEach(b -> b.render(gc));
         minions.forEach(m -> m.render(gc));
+        hitEffects.forEach(e -> e.render(gc)); // ✅ Render hit effects
 
         HUD hud = new HUD(score, lives);
         hud.render(gc);
