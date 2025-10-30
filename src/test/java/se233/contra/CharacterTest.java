@@ -21,8 +21,6 @@ public class CharacterTest {
         character = new Character(100, 400);
     }
 
-    // ===== MOVEMENT TESTS (Required for 1 point) =====
-
     @Test
     public void testMoveLeft() {
         double initialX = character.getX();
@@ -56,8 +54,7 @@ public class CharacterTest {
     @Test
     public void testProne() {
         character.prone();
-        assertTrue(character.isProne(),
-                "Character should be in prone state");
+        assertTrue(character.isProne(), "Character should be in prone state");
     }
 
     @Test
@@ -72,8 +69,6 @@ public class CharacterTest {
         assertEquals(xAfterMove, character.getX(), 0.1,
                 "Character should stop moving");
     }
-
-    // ===== ACTION TESTS (Required for 2 points) =====
 
     @Test
     public void testShoot() {
@@ -94,7 +89,6 @@ public class CharacterTest {
 
     @Test
     public void testRespawn() {
-        // Move character away from spawn
         character.setX(500);
         character.setY(200);
 

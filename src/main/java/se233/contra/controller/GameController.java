@@ -136,6 +136,16 @@ public class GameController {
         if (currentBoss != null) {
             currentBoss.update();
 
+            // ✅ Check if JavaBoss spawned minions
+            if (currentBoss instanceof JavaBoss) {
+                JavaBoss javaBoss = (JavaBoss) currentBoss;
+                if (javaBoss.hasSpawnedMinions()) {
+                    List<Minion> newMinions = javaBoss.getAndClearSpawnedMinions();
+                    minions.addAll(newMinions);
+                    GameLogger.info("JavaBoss spawned " + newMinions.size() + " minions!");
+                }
+            }
+
             if (currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
                 score.addScore(currentBoss.getScoreValue());
                 currentBoss.awardScore();
@@ -268,9 +278,6 @@ public class GameController {
         gc.fillText("Enemies: " + minions.size(), 340, 80);
     }
 
-    /**
-     * Normal shoot - single bullet
-     */
     public void shoot() {
         Bullet bullet = player.shoot();
         if (bullet != null) {
@@ -279,9 +286,6 @@ public class GameController {
         }
     }
 
-    /**
-     * ✅ SPECIAL ATTACK - Spread Shot (3 bullets)
-     */
     public void shootSpecialAttack() {
         List<Bullet> spreadBullets = player.shootSpecialAttack();
         if (spreadBullets != null && !spreadBullets.isEmpty()) {
