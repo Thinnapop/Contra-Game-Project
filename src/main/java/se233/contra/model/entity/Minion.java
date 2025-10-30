@@ -6,6 +6,7 @@ import se233.contra.util.GameLogger;
 
 public class Minion extends Entity {
     private int health;
+    private int maxHealth;
     private int scoreValue;
     private double moveSpeed;
     private int type; // 1 = regular, 2 = second-tier
@@ -14,19 +15,25 @@ public class Minion extends Entity {
         this.x = x;
         this.y = y;
         this.type = type;
-        this.health = type; // type 1 = 1 health, type 2 = 2 health
-        this.scoreValue = type; // type 1 = 1 point, type 2 = 2 points
-        this.moveSpeed = 1.5;
-        this.active = true;
 
-        // Size based on type
+        // ✅ Updated health values for new damage system
         if (type == 1) {
+            this.health = 20;      // Regular minion: 1 hit
+            this.maxHealth = 20;
+            this.scoreValue = 1;
             this.width = 30;
             this.height = 30;
+            this.moveSpeed = 1.5;
         } else {
+            this.health = 40;      // Second-tier: 2 hits
+            this.maxHealth = 40;
+            this.scoreValue = 2;
             this.width = 40;
             this.height = 40;
+            this.moveSpeed = 1.0;
         }
+
+        this.active = true;
     }
 
     @Override
@@ -49,10 +56,10 @@ public class Minion extends Entity {
             // Different colors based on type
             if (type == 1) {
                 // Regular minion - Green
-                gc.setFill(Color.GREEN);
+                gc.setFill(Color.rgb(50, 200, 50));
             } else {
                 // Second-tier minion - Purple
-                gc.setFill(Color.PURPLE);
+                gc.setFill(Color.rgb(150, 50, 200));
             }
 
             // Draw minion body
@@ -63,11 +70,18 @@ public class Minion extends Entity {
             gc.setLineWidth(2);
             gc.strokeRect(x, y, width, height);
 
-            // Draw health indicator (small dots)
+            // Draw health bar
+            double healthBarWidth = width * ((double) health / maxHealth);
             gc.setFill(Color.RED);
-            for (int i = 0; i < health; i++) {
-                gc.fillOval(x + 5 + (i * 8), y + 5, 6, 6);
-            }
+            gc.fillRect(x, y - 8, width, 4);
+            gc.setFill(Color.GREEN);
+            gc.fillRect(x, y - 8, healthBarWidth, 4);
+
+            // Draw eyes to make it look more like an enemy
+            gc.setFill(Color.RED);
+            double eyeSize = type == 1 ? 6 : 8;
+            gc.fillOval(x + width * 0.25 - eyeSize/2, y + height * 0.4, eyeSize, eyeSize);
+            gc.fillOval(x + width * 0.75 - eyeSize/2, y + height * 0.4, eyeSize, eyeSize);
         }
     }
 
@@ -77,7 +91,7 @@ public class Minion extends Entity {
             active = false;
             GameLogger.debug("Minion destroyed. Score value: " + scoreValue);
         } else {
-            GameLogger.debug("Minion took damage. Health remaining: " + health);
+            GameLogger.debug("Minion took " + damage + " damage. Health remaining: " + health);
         }
     }
 

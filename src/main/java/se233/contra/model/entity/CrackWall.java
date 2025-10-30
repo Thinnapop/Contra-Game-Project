@@ -15,8 +15,8 @@ public class CrackWall extends Entity {
         this.width = width;
         this.height = height;
         this.active = true;
-        this.isVisible = false;      // Start invisible
-        this.hasCollision = true;    // Start with deadly collision
+        this.isVisible = false;
+        this.hasCollision = true;
 
         loadCrackImage();
     }
@@ -46,7 +46,6 @@ public class CrackWall extends Entity {
     @Override
     public void render(GraphicsContext gc) {
         if (isVisible && crackImage != null) {
-            // Render the full crack overlay on the entire screen
             gc.drawImage(crackImage, 0, 0, 800, 600);
         }
     }

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 public class Bullet extends Entity {
     private double speed;
-    protected int damage;  // Changed from private to protected
+    protected int damage;
 
     public Bullet(double x, double y, double directionX, double directionY) {
         this.x = x;
@@ -13,7 +13,7 @@ public class Bullet extends Entity {
         this.width = 8;
         this.height = 8;
         this.speed = 10;
-        this.damage = 5;
+        this.damage = 20;  // ✅ Increased from 5 to 20 for better gameplay
         this.active = true;
         this.velocityX = directionX * speed;
         this.velocityY = directionY * speed;
