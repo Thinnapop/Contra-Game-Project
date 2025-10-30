@@ -6,7 +6,6 @@ import javafx.scene.paint.Color;
 import se233.contra.util.AnimationManager;
 import se233.contra.util.GameLogger;
 import se233.contra.util.SpriteLoader;
-import se233.contra.util.SoundManager;
 import se233.contra.model.Platform;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -195,13 +194,6 @@ public class Character extends Entity {
             shootCooldown = FIRE_RATE;
             isShooting = true;
 
-            // Play gun shot sound effect
-            try {
-                SoundManager.playSound("gun_shot");
-            } catch (Exception e) {
-                GameLogger.debug("Sound effect not available: " + e.getMessage());
-            }
-
             double bulletX, bulletY;
 
             if (facingRight) {
@@ -236,12 +228,6 @@ public class Character extends Entity {
             specialAttackReady = false;
             isShooting = true;
 
-            // Play gun shot sound (you can add a different sound for special attack)
-            try {
-                SoundManager.playSound("gun_shot");
-            } catch (Exception e) {
-                GameLogger.debug("Sound effect not available: " + e.getMessage());
-            }
 
             double bulletX, bulletY;
             double direction = facingRight ? 1 : -1;
