@@ -37,6 +37,9 @@ public class InputController {
         boolean crouching = pressedKeys.contains(KeyCode.DOWN) || pressedKeys.contains(KeyCode.S);
         boolean shooting = pressedKeys.contains(KeyCode.SPACE);
 
+        // ✅ Special attack key - X or SHIFT
+        boolean specialAttack = pressedKeys.contains(KeyCode.X) || pressedKeys.contains(KeyCode.SHIFT);
+
         // Handle movement
         if (movingLeft && movingRight) {
             player.stopMoving();
@@ -58,9 +61,13 @@ public class InputController {
             player.prone();
         }
 
-        // ✅ Handle shooting - continuous fire when holding SPACE
-        if (shooting) {
-            gameController.shoot();  // Called every frame, cooldown managed in Character
+        // ✅ Handle special attack (priority over normal shoot)
+        if (specialAttack && !shooting) {
+            gameController.shootSpecialAttack();
+        }
+        // Handle normal shooting
+        else if (shooting && !specialAttack) {
+            gameController.shoot();
         }
     }
 
@@ -71,7 +78,6 @@ public class InputController {
         if (keyCode == KeyCode.LEFT || keyCode == KeyCode.A ||
                 keyCode == KeyCode.RIGHT || keyCode == KeyCode.D) {
 
-            // Check if NO movement keys are pressed
             if (!pressedKeys.contains(KeyCode.LEFT) &&
                     !pressedKeys.contains(KeyCode.A) &&
                     !pressedKeys.contains(KeyCode.RIGHT) &&
@@ -86,8 +92,8 @@ public class InputController {
             player.standUp();
         }
 
-        // Stop shooting animation when SPACE released
-        if (keyCode == KeyCode.SPACE) {
+        // Stop shooting animation when keys released
+        if (keyCode == KeyCode.SPACE || keyCode == KeyCode.X || keyCode == KeyCode.SHIFT) {
             player.stopShooting();
         }
     }

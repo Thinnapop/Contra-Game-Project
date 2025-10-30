@@ -1272,3 +1272,464 @@ java.lang.NullPointerException: Input stream must not be null
 23:08:05.217 [main] INFO  ContraGame - Prone animation loaded: 2 frames
 23:08:05.217 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
 23:08:05.217 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+23:31:38.052 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Starting ===
+23:31:38.283 [JavaFX Application Thread] INFO  ContraGame - Menu displayed successfully
+23:31:39.032 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+23:31:39.048 [JavaFX Application Thread] INFO  ContraGame - Loaded background for Boss 1
+23:31:39.049 [JavaFX Application Thread] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+23:31:39.068 [JavaFX Application Thread] INFO  ContraGame - Loaded sprite: /se233/sprites/character/character.png
+23:31:39.069 [JavaFX Application Thread] INFO  ContraGame - Idle animation loaded: 1 frame
+23:31:39.071 [JavaFX Application Thread] INFO  ContraGame - Extracted 5 frames from row 0
+23:31:39.071 [JavaFX Application Thread] INFO  ContraGame - Run animation loaded: 5 frames
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Extracted 4 frames from row 1
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Extracted 2 frames from row 0
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Prone animation loaded: 2 frames
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Character animations loaded. Total animations: 4
+23:31:39.072 [JavaFX Application Thread] INFO  ContraGame - Character created at position: (100.0, 400.0)
+23:31:39.073 [JavaFX Application Thread] ERROR ContraGame - Failed to load crack wall image
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.model.entity.CrackWall.loadCrackImage(CrackWall.java:27)
+	at se233.contra/se233.contra.model.entity.CrackWall.<init>(CrackWall.java:21)
+	at se233.contra/se233.contra.controller.GameController.initializeGame(GameController.java:50)
+	at se233.contra/se233.contra.controller.GameController.<init>(GameController.java:34)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:42)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+23:31:39.073 [JavaFX Application Thread] INFO  ContraGame - Phase changed to: MINION_WAVE for Boss Level 1
+23:31:39.074 [JavaFX Application Thread] INFO  ContraGame - Created 3 minion waves for Boss Level 1
+23:31:39.074 [JavaFX Application Thread] INFO  ContraGame - === MINION WAVE STARTED FOR BOSS 1 ===
+23:31:39.074 [JavaFX Application Thread] INFO  ContraGame - Game initialized - Starting with minion wave
+23:31:39.078 [JavaFX Application Thread] INFO  ContraGame - Game started successfully
+23:31:39.573 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:31:40.073 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:31:40.573 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:31:40.873 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:31:40.873 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:31:41.081 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:31:41.322 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:31:41.329 [JavaFX Application Thread] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/gunEffect.png
+23:31:41.329 [JavaFX Application Thread] INFO  ContraGame - Extracted 3 frames from row 0
+23:31:41.329 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:41.329 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 1
+23:31:41.423 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:41.581 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:31:42.081 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:31:42.364 [JavaFX Application Thread] INFO  ContraGame - Special Attack Ready!
+23:31:42.581 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:31:42.711 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:43.081 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:31:43.123 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:43.338 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:43.348 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 2
+23:31:43.348 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:31:43.348 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:31:43.483 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:43.547 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:31:43.548 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:43.548 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 2
+23:31:43.556 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:31:43.556 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:43.556 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 3
+23:31:43.589 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 2
+23:31:43.598 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:31:43.598 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:43.598 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 4
+23:31:43.648 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:43.656 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:43.698 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:43.748 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 1
+23:31:43.748 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:31:43.749 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:31:44.089 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 2
+23:31:44.098 [JavaFX Application Thread] INFO  ContraGame - All minion waves spawned! Waiting for clear...
+23:31:44.274 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:44.904 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:31:44.904 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:31:44.989 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:31:44.990 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:44.990 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 5
+23:31:45.089 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:45.559 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.039 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.248 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.398 [JavaFX Application Thread] INFO  ContraGame - Special Attack Ready!
+23:31:46.440 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.498 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:31:46.498 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:46.589 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.598 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:31:46.671 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:31:46.672 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:31:46.672 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:31:46.672 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 7
+23:31:46.681 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 0
+23:31:46.681 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:31:46.681 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:31:46.681 [JavaFX Application Thread] INFO  ContraGame - Game state changed to: GAME_OVER
+23:31:50.842 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Stopping ===
+23:32:15.829 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Starting ===
+23:32:16.063 [JavaFX Application Thread] INFO  ContraGame - Menu displayed successfully
+23:32:16.565 [JavaFX Application Thread] INFO  ContraGame - Starting game...
+23:32:16.602 [JavaFX Application Thread] INFO  ContraGame - Loaded background for Boss 1
+23:32:16.603 [JavaFX Application Thread] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+23:32:16.618 [JavaFX Application Thread] INFO  ContraGame - Loaded sprite: /se233/sprites/character/character.png
+23:32:16.618 [JavaFX Application Thread] INFO  ContraGame - Idle animation loaded: 1 frame
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Extracted 5 frames from row 0
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Run animation loaded: 5 frames
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Extracted 4 frames from row 1
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Extracted 2 frames from row 0
+23:32:16.620 [JavaFX Application Thread] INFO  ContraGame - Prone animation loaded: 2 frames
+23:32:16.621 [JavaFX Application Thread] INFO  ContraGame - Character animations loaded. Total animations: 4
+23:32:16.621 [JavaFX Application Thread] INFO  ContraGame - Character created at position: (100.0, 400.0)
+23:32:16.621 [JavaFX Application Thread] ERROR ContraGame - Failed to load crack wall image
+java.lang.NullPointerException: Input stream must not be null
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.validateInputStream(Image.java:1140)
+	at javafx.graphics@21.0.1/javafx.scene.image.Image.<init>(Image.java:707)
+	at se233.contra/se233.contra.model.entity.CrackWall.loadCrackImage(CrackWall.java:27)
+	at se233.contra/se233.contra.model.entity.CrackWall.<init>(CrackWall.java:21)
+	at se233.contra/se233.contra.controller.GameController.initializeGame(GameController.java:50)
+	at se233.contra/se233.contra.controller.GameController.<init>(GameController.java:34)
+	at se233.contra/se233.contra.view.GameCanvas.show(GameCanvas.java:42)
+	at se233.contra/se233.contra.view.MenuView.startGame(MenuView.java:142)
+	at se233.contra/se233.contra.view.MenuView.lambda$show$0(MenuView.java:43)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Node.fireEvent(Node.java:8875)
+	at javafx.controls@21.0.1/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207)
+	at javafx.controls@21.0.1/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@21.0.1/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@21.0.1/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@21.0.1/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$MouseHandler.process(Scene.java:3984)
+	at javafx.graphics@21.0.1/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@21.0.1/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@21.0.1/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@21.0.1/com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127)
+23:32:16.622 [JavaFX Application Thread] INFO  ContraGame - Phase changed to: MINION_WAVE for Boss Level 1
+23:32:16.623 [JavaFX Application Thread] INFO  ContraGame - Created 3 minion waves for Boss Level 1
+23:32:16.623 [JavaFX Application Thread] INFO  ContraGame - === MINION WAVE STARTED FOR BOSS 1 ===
+23:32:16.623 [JavaFX Application Thread] INFO  ContraGame - Game initialized - Starting with minion wave
+23:32:16.627 [JavaFX Application Thread] INFO  ContraGame - Game started successfully
+23:32:17.123 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:17.295 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:17.464 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:17.631 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:17.957 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:18.130 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:18.137 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:18.256 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:18.258 [JavaFX Application Thread] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/gunEffect.png
+23:32:18.259 [JavaFX Application Thread] INFO  ContraGame - Extracted 3 frames from row 0
+23:32:18.259 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:18.259 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 1
+23:32:18.356 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:18.639 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:32:19.139 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:32:19.315 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:19.500 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:19.639 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:32:19.681 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:19.681 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:19.681 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 2
+23:32:19.706 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:19.781 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:19.904 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:20.102 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:20.139 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:32:20.223 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:20.223 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:20.223 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 3
+23:32:20.322 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:20.368 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:32:20.369 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:32:20.514 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:20.515 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:20.515 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 4
+23:32:20.614 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:20.639 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 1
+23:32:20.823 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:20.823 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:20.823 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 5
+23:32:20.923 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:21.148 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 2
+23:32:21.158 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:21.306 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:21.323 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:21.323 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:21.323 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 6
+23:32:21.423 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:21.475 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:21.568 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:21.648 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 2
+23:32:21.648 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:21.648 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:21.648 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 7
+23:32:21.656 [JavaFX Application Thread] INFO  ContraGame - All minion waves spawned! Waiting for clear...
+23:32:21.748 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:21.864 [JavaFX Application Thread] INFO  ContraGame - Special Attack Ready!
+23:32:22.415 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:22.593 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:22.673 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:22.781 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:22.980 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:23.065 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:23.065 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:23.098 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:23.098 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:23.131 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:23.164 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:23.189 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:32:23.189 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:23.189 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 9
+23:32:23.197 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:23.289 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:23.325 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:23.731 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:32:23.732 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:23.732 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 11
+23:32:23.747 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 2
+23:32:23.748 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:32:23.748 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:32:23.756 [JavaFX Application Thread] INFO  ContraGame - ✓ All minion waves cleared! Boss can now appear!
+23:32:23.757 [JavaFX Application Thread] INFO  ContraGame - Phase changed to: BOSS_FIGHT for Boss Level 1
+23:32:23.763 [JavaFX Application Thread] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/explode.png
+23:32:23.764 [JavaFX Application Thread] INFO  ContraGame - Extracted 4 frames from row 0
+23:32:23.764 [JavaFX Application Thread] INFO  ContraGame - Explosion animation loaded: 4 frames (3 loops max)
+23:32:23.764 [JavaFX Application Thread] INFO  ContraGame - Loaded Boss 1
+23:32:23.764 [JavaFX Application Thread] INFO  ContraGame - === BOSS FIGHT STARTED ===
+23:32:23.774 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:32:23.774 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:32:23.839 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:24.073 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:24.073 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:24.173 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:24.191 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:24.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:24.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:25.039 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:25.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:25.273 [JavaFX Application Thread] INFO  ContraGame - Special Attack Ready!
+23:32:25.666 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:25.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:26.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:26.715 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:26.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:26.790 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:26.790 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:26.889 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:27.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:27.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:28.192 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:28.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:28.401 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:28.555 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:28.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:29.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:29.763 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:30.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:30.764 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:31.264 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:31.773 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:32.180 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:32.239 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:32.239 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:32.273 [JavaFX Application Thread] DEBUG ContraGame - Boss 1 attacking
+23:32:32.339 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:32.376 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:32.439 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:32.439 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:32.539 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:32.598 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:32.664 [JavaFX Application Thread] INFO  ContraGame - Defense Wall Boss defeated! Starting explosion...
+23:32:32.665 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:32.665 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:32.673 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 13
+23:32:32.673 [JavaFX Application Thread] INFO  ContraGame - Crack wall revealed! Now walkable.
+23:32:32.673 [JavaFX Application Thread] INFO  ContraGame - Boss defeated! Score awarded: 2
+23:32:32.764 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:32.765 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:32.822 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:32.822 [JavaFX Application Thread] INFO  ContraGame - Boss hit!
+23:32:32.923 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:33.465 [JavaFX Application Thread] INFO  ContraGame - Explosion finished after 3 loops!
+23:32:34.456 [JavaFX Application Thread] INFO  ContraGame - Boss removed after delay
+23:32:36.231 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:32:36.232 [JavaFX Application Thread] INFO  ContraGame - Phase changed to: MINION_WAVE for Boss Level 2
+23:32:36.232 [JavaFX Application Thread] INFO  ContraGame - Created 4 minion waves for Boss Level 2
+23:32:36.232 [JavaFX Application Thread] INFO  ContraGame - === MINION WAVE STARTED FOR BOSS 2 ===
+23:32:36.232 [JavaFX Application Thread] INFO  ContraGame - Transitioned to Boss 2 stage
+23:32:36.265 [JavaFX Application Thread] INFO  ContraGame - Loaded background for Boss 2
+23:32:36.764 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:37.264 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:37.322 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:37.516 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:37.693 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:37.764 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:37.903 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:37.981 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:38.138 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:38.264 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 1, Type: 1
+23:32:38.300 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:38.480 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:38.556 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:38.557 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:38.557 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 14
+23:32:38.656 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:38.692 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:32:38.692 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:32:38.773 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 2
+23:32:39.021 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:39.233 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:39.273 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 2
+23:32:39.606 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:39.606 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:39.706 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:39.739 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:39.772 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 2, Type: 2
+23:32:39.772 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 1
+23:32:39.772 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:32:39.772 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:32:39.911 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:40.148 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:40.148 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:40.248 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:40.281 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 1
+23:32:40.364 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:32:40.364 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:40.364 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 16
+23:32:40.464 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:40.497 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:40.648 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:40.648 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:40.648 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 17
+23:32:40.676 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:40.748 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:40.781 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 1
+23:32:40.837 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:40.998 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:41.023 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:41.023 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:41.023 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 18
+23:32:41.123 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:41.174 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:41.281 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 1
+23:32:41.396 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:41.654 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:41.781 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 1
+23:32:41.923 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:41.923 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:41.923 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 19
+23:32:42.023 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:42.076 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:42.214 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:32:42.214 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:42.214 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 21
+23:32:42.231 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:42.281 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 3, Type: 1
+23:32:42.314 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:42.389 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:42.389 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:42.489 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:42.773 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired!
+23:32:42.774 [JavaFX Application Thread] INFO  ContraGame - Special Attack: Spread Shot fired! (3 bullets)
+23:32:42.789 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 4, Type: 2
+23:32:42.881 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 2
+23:32:42.881 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:42.882 [JavaFX Application Thread] INFO  ContraGame - Score increased by 2. Total: 23
+23:32:42.981 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:43.140 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:43.289 [JavaFX Application Thread] DEBUG ContraGame - Spawned minion - Wave 4, Type: 2
+23:32:43.298 [JavaFX Application Thread] INFO  ContraGame - All minion waves spawned! Waiting for clear...
+23:32:43.409 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:43.597 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:43.788 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:43.939 [JavaFX Application Thread] DEBUG ContraGame - Minion destroyed. Score value: 1
+23:32:43.939 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:43.939 [JavaFX Application Thread] INFO  ContraGame - Score increased by 1. Total: 24
+23:32:43.942 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:43.956 [JavaFX Application Thread] DEBUG ContraGame - Minion took 20 damage. Health remaining: 20
+23:32:43.956 [JavaFX Application Thread] DEBUG ContraGame - Hit effect animation loaded: 3 frames
+23:32:44.039 [JavaFX Application Thread] DEBUG ContraGame - Hit effect finished
+23:32:44.047 [JavaFX Application Thread] WARN  ContraGame - Life lost! Remaining: 0
+23:32:44.047 [JavaFX Application Thread] INFO  ContraGame - Character respawned
+23:32:44.048 [JavaFX Application Thread] WARN  ContraGame - Player collided with minion!
+23:32:44.048 [JavaFX Application Thread] INFO  ContraGame - Game state changed to: GAME_OVER
+23:32:44.283 [JavaFX Application Thread] DEBUG ContraGame - Player shot bullet
+23:32:47.984 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Stopping ===

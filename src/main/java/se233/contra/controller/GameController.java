@@ -27,7 +27,6 @@ public class GameController {
     private CrackWall crackWall;
     private boolean canTransition;
 
-    // ✅ NEW: Minion spawning system
     private MinionSpawner minionSpawner;
     private boolean bossSpawned;
 
@@ -52,7 +51,6 @@ public class GameController {
         canTransition = false;
         bossSpawned = false;
 
-        // ✅ Start with minion waves, NOT boss
         startMinionWave(1);
         GameLogger.info("Game initialized - Starting with minion wave");
     }
@@ -67,15 +65,14 @@ public class GameController {
 
     private void createPlatformsBoss2() {
         platforms.clear();
-        platforms.add(new Platform(50, 500, 2200, 60));
+        platforms.add(new Platform(50, 500, 800, 60));
     }
 
-    // ✅ NEW: Start minion wave for a boss level
     private void startMinionWave(int bossLevel) {
         gameState.setPhase(GameState.Phase.MINION_WAVE);
         minionSpawner = new MinionSpawner(bossLevel);
         bossSpawned = false;
-        currentBoss = null;  // No boss during minion wave
+        currentBoss = null;
         GameLogger.info("=== MINION WAVE STARTED FOR BOSS " + bossLevel + " ===");
     }
 
@@ -87,7 +84,6 @@ public class GameController {
         player.update();
         player.checkPlatformCollision(platforms);
 
-        // ✅ Handle different phases
         if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE) {
             updateMinionPhase();
         } else if (gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
@@ -100,14 +96,12 @@ public class GameController {
         minions.forEach(Minion::update);
         hitEffects.forEach(HitEffect::update);
 
-        // Check crack wall collision (only if it has collision)
         if (crackWall != null && crackWall.hasCollision() && player.intersects(crackWall)) {
             lives.loseLife();
             player.respawn();
             GameLogger.warn("Player hit the wall!");
         }
 
-        // Check collisions
         if (currentBoss != null) {
             collisionController.checkCollisions(
                     player, currentBoss, playerBullets,
@@ -115,46 +109,37 @@ public class GameController {
                     score, lives
             );
         } else {
-            // Collision with minions only (no boss yet)
             checkMinionCollisions();
         }
 
-        // Remove inactive entities
         playerBullets.removeIf(b -> !b.isActive());
         enemyBullets.removeIf(b -> !b.isActive());
         minions.removeIf(m -> !m.isActive());
         hitEffects.removeIf(e -> e.isFinished());
 
-        // Check if lives depleted
         if (!lives.hasLivesLeft()) {
             gameState.setState(GameState.State.GAME_OVER);
         }
     }
 
-    // ✅ NEW: Update during minion wave phase
     private void updateMinionPhase() {
-        // Spawn minions
         if (minionSpawner != null) {
             minionSpawner.update(minions);
 
-            // Check if all minion waves are complete
             if (minionSpawner.areWavesComplete(minions)) {
                 transitionToBossFight();
             }
         }
     }
 
-    // ✅ NEW: Update during boss fight phase
     private void updateBossPhase() {
         if (currentBoss != null) {
             currentBoss.update();
 
-            // Check boss defeated and reveal crack
             if (currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
                 score.addScore(currentBoss.getScoreValue());
                 currentBoss.awardScore();
 
-                // Reveal the crack wall
                 if (crackWall != null && !crackWall.isVisible()) {
                     crackWall.revealCrack();
                     canTransition = true;
@@ -169,7 +154,6 @@ public class GameController {
         }
     }
 
-    // ✅ NEW: Transition from minion wave to boss fight
     private void transitionToBossFight() {
         gameState.setPhase(GameState.Phase.BOSS_FIGHT);
         loadBoss(gameState.getCurrentBossLevel());
@@ -177,9 +161,7 @@ public class GameController {
         GameLogger.info("=== BOSS FIGHT STARTED ===");
     }
 
-    // ✅ NEW: Check collisions with minions only
     private void checkMinionCollisions() {
-        // Player bullets hit minions
         for (Bullet bullet : playerBullets) {
             for (Minion minion : minions) {
                 if (bullet.intersects(minion)) {
@@ -194,12 +176,11 @@ public class GameController {
             }
         }
 
-        // Minions hit player (collision damage)
         for (Minion minion : minions) {
             if (player.intersects(minion)) {
                 lives.loseLife();
                 player.respawn();
-                minion.setActive(false);  // Destroy minion on collision
+                minion.setActive(false);
                 GameLogger.warn("Player collided with minion!");
             }
         }
@@ -212,18 +193,15 @@ public class GameController {
         gameState.nextBoss();
 
         if (nextLevel <= 3) {
-            // Clear current entities
             playerBullets.clear();
             enemyBullets.clear();
             minions.clear();
             hitEffects.clear();
 
-            // Reset player position to spawn point
             player.setX(100);
             player.setY(350);
             player.respawn();
 
-            // ✅ Start minion wave for next boss
             startMinionWave(nextLevel);
 
             if (nextLevel == 2) {
@@ -255,14 +233,12 @@ public class GameController {
     }
 
     public void render(GraphicsContext gc) {
-        // Render crack wall if it exists
         if (crackWall != null) {
             crackWall.render(gc);
         }
 
         player.render(gc);
 
-        // Render boss only during boss phase
         if (currentBoss != null && gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
             currentBoss.render(gc);
         }
@@ -272,7 +248,6 @@ public class GameController {
         minions.forEach(m -> m.render(gc));
         hitEffects.forEach(e -> e.render(gc));
 
-        // ✅ NEW: Show wave information during minion phase
         if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE && minionSpawner != null) {
             renderWaveInfo(gc);
         }
@@ -281,7 +256,6 @@ public class GameController {
         hud.render(gc);
     }
 
-    // ✅ NEW: Render wave information
     private void renderWaveInfo(GraphicsContext gc) {
         gc.setFill(Color.YELLOW);
         gc.setFont(javafx.scene.text.Font.font("Arial", 24));
@@ -294,11 +268,25 @@ public class GameController {
         gc.fillText("Enemies: " + minions.size(), 340, 80);
     }
 
+    /**
+     * Normal shoot - single bullet
+     */
     public void shoot() {
         Bullet bullet = player.shoot();
         if (bullet != null) {
             playerBullets.add(bullet);
             GameLogger.debug("Player shot bullet");
+        }
+    }
+
+    /**
+     * ✅ SPECIAL ATTACK - Spread Shot (3 bullets)
+     */
+    public void shootSpecialAttack() {
+        List<Bullet> spreadBullets = player.shootSpecialAttack();
+        if (spreadBullets != null && !spreadBullets.isEmpty()) {
+            playerBullets.addAll(spreadBullets);
+            GameLogger.info("Special Attack: Spread Shot fired! (" + spreadBullets.size() + " bullets)");
         }
     }
 
