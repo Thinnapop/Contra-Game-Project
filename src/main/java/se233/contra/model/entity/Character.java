@@ -373,7 +373,7 @@ public class Character extends Entity {
 
     public void respawn() {
         x = 100;
-        y = 400;
+        y = 300;
         velocityX = 0;
         velocityY = 0;
         isJumping = false;

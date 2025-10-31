@@ -150,14 +150,25 @@ public class GameController {
                 score.addScore(currentBoss.getScoreValue());
                 currentBoss.awardScore();
 
-                if (crackWall != null && !crackWall.isVisible()) {
-                    crackWall.revealCrack();
+                int currentLevel = gameState.getCurrentBossLevel();
+
+                // ✅ Boss 1: Show crack wall effect
+                if (currentLevel == 1) {
+                    if (crackWall != null && !crackWall.isVisible()) {
+                        crackWall.revealCrack();
+                    }
+                }
+
+                // ✅ Enable transition for Boss 1 and Boss 2
+                if (currentLevel == 1 || currentLevel == 2) {
                     canTransition = true;
+                    GameLogger.info("Transition enabled! Walk to the right edge to proceed to next boss.");
                 }
 
                 GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
             }
 
+            // ✅ Check if player reaches right edge for transition
             if (canTransition && player.getX() >= 700) {
                 transitionToNextBoss();
             }
@@ -264,6 +275,11 @@ public class GameController {
 
         HUD hud = new HUD(score, lives);
         hud.render(gc);
+
+        // ✅ Show transition indicator when boss is defeated
+        if (canTransition && gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
+            renderTransitionIndicator(gc);
+        }
     }
 
     private void renderWaveInfo(GraphicsContext gc) {
@@ -278,6 +294,38 @@ public class GameController {
         gc.fillText("Enemies: " + minions.size(), 340, 80);
     }
 
+    /**
+     * ✅ Render transition indicator when boss is defeated
+     */
+    private void renderTransitionIndicator(GraphicsContext gc) {
+        // Blinking arrow effect
+        int frame = (int) (System.currentTimeMillis() / 300) % 2;
+
+        if (frame == 0) {
+            gc.setFill(Color.YELLOW);
+        } else {
+            gc.setFill(Color.ORANGE);
+        }
+
+        gc.setFont(javafx.scene.text.Font.font("Arial", 28));
+        gc.fillText(">>> GO RIGHT >>>", 250, 300);
+
+        // Draw arrow on right side of screen
+        gc.setFill(Color.LIME);
+        gc.fillPolygon(
+                new double[]{750, 780, 750},  // x coordinates
+                new double[]{280, 300, 320},  // y coordinates
+                3  // number of points
+        );
+
+        gc.setFont(javafx.scene.text.Font.font("Arial", 18));
+        gc.setFill(Color.WHITE);
+        gc.fillText("Walk to the right edge to proceed", 220, 330);
+    }
+
+    /**
+     * Normal shoot - single bullet
+     */
     public void shoot() {
         Bullet bullet = player.shoot();
         if (bullet != null) {
@@ -286,6 +334,9 @@ public class GameController {
         }
     }
 
+    /**
+     * ✅ SPECIAL ATTACK - Spread Shot (3 bullets)
+     */
     public void shootSpecialAttack() {
         List<Bullet> spreadBullets = player.shootSpecialAttack();
         if (spreadBullets != null && !spreadBullets.isEmpty()) {

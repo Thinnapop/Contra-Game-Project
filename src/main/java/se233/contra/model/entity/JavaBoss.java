@@ -269,7 +269,12 @@ public class JavaBoss extends Boss {
         if (deathTimer >= DEATH_DURATION && !deathComplete) {
             deathComplete = true;
             this.active = false;
-            GameLogger.info("Java Boss death animation complete");
+
+            // ✅ Move boss off-screen to remove from view
+            this.x = -1000;
+            this.y = -1000;
+
+            GameLogger.info("Java Boss death animation complete - removed from scene");
         }
     }
 
@@ -287,18 +292,29 @@ public class JavaBoss extends Boss {
         GameLogger.debug("Java Boss spawned minion from mouth at (" + mouthX + ", " + mouthY + ")");
     }
 
+    /**
+     * ✅ Get and clear spawned minions (called by GameController)
+     */
     public List<Minion> getAndClearSpawnedMinions() {
         List<Minion> minions = new ArrayList<>(spawnedMinions);
         spawnedMinions.clear();
         return minions;
     }
 
+    /**
+     * Check if boss has minions to spawn
+     */
     public boolean hasSpawnedMinions() {
         return !spawnedMinions.isEmpty();
     }
 
     @Override
     public void render(GraphicsContext gc) {
+        // ✅ Don't render if death animation is complete (boss removed from scene)
+        if (deathComplete) {
+            return;
+        }
+
         if (active || currentState == BossState.DEAD) {
             // Render animated sprite
             if (currentAnimation != null) {
