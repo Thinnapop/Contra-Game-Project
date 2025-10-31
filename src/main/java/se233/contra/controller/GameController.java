@@ -29,6 +29,9 @@ public class GameController {
 
     private MinionSpawner minionSpawner;
     private boolean bossSpawned;
+    private int warningTimer;
+    private static final int WARNING_DURATION = 240; // 4 seconds (60 FPS × 4)
+    private boolean warningComplete;
 
     public GameController() {
         initializeGame();
@@ -65,7 +68,12 @@ public class GameController {
 
     private void createPlatformsBoss2() {
         platforms.clear();
-        platforms.add(new Platform(50, 500, 800, 60));
+        platforms.add(new Platform(50, 470, 800, 60));
+    }
+
+    private void createPlatformsBoss3() {
+        platforms.clear();
+        platforms.add(new Platform(50, 480, 800, 60));
     }
 
     private void startMinionWave(int bossLevel) {
@@ -84,7 +92,10 @@ public class GameController {
         player.update();
         player.checkPlatformCollision(platforms);
 
-        if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE) {
+        // ✅ Handle different game phases
+        if (gameState.getCurrentPhase() == GameState.Phase.WARNING) {
+            updateWarningPhase();
+        } else if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE) {
             updateMinionPhase();
         } else if (gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
             updateBossPhase();
@@ -119,6 +130,17 @@ public class GameController {
 
         if (!lives.hasLivesLeft()) {
             gameState.setState(GameState.State.GAME_OVER);
+        }
+    }
+
+    private void updateWarningPhase() {
+        warningTimer++;
+
+        if (warningTimer >= WARNING_DURATION && !warningComplete) {
+            warningComplete = true;
+            gameState.setPhase(GameState.Phase.MINION_WAVE);
+            startMinionWave(3);  // Start Boss 3 minion wave
+            GameLogger.info("Warning complete! Minion wave starting...");
         }
     }
 
@@ -223,15 +245,21 @@ public class GameController {
             player.setY(350);
             player.respawn();
 
-            startMinionWave(nextLevel);
+            // ✅ Boss 3: Start with WARNING phase
+            if (nextLevel == 3) {
+                warningTimer = 0;
+                warningComplete = false;
+                crackWall = null;
+                GameLogger.info("Transitioned to Boss 3 stage - WARNING PHASE");
+            } else {
+                // Boss 1 and 2: Start with minion wave
+                startMinionWave(nextLevel);
 
-            if (nextLevel == 2) {
-                createPlatformsBoss2();
-                crackWall = null;
-                GameLogger.info("Transitioned to Boss 2 stage");
-            } else if (nextLevel == 3) {
-                crackWall = null;
-                GameLogger.info("Transitioned to Boss 3 stage");
+                if (nextLevel == 2) {
+                    createPlatformsBoss2();
+                    crackWall = null;
+                    GameLogger.info("Transitioned to Boss 2 stage");
+                }
             }
         } else {
             gameState.setState(GameState.State.VICTORY);
@@ -269,17 +297,16 @@ public class GameController {
         minions.forEach(m -> m.render(gc));
         hitEffects.forEach(e -> e.render(gc));
 
-        if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE && minionSpawner != null) {
+        // ✅ Render based on current phase
+        if (gameState.getCurrentPhase() == GameState.Phase.WARNING) {
+            renderWarning(gc);
+        } else if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE && minionSpawner != null) {
             renderWaveInfo(gc);
         }
 
         HUD hud = new HUD(score, lives);
         hud.render(gc);
 
-        // ✅ Show transition indicator when boss is defeated
-        if (canTransition && gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
-            renderTransitionIndicator(gc);
-        }
     }
 
     private void renderWaveInfo(GraphicsContext gc) {
@@ -295,34 +322,87 @@ public class GameController {
     }
 
     /**
-     * ✅ Render transition indicator when boss is defeated
+     * ✅ Render WARNING animation for Boss 3
+     * Displays dramatic warning with flashing effects
      */
-    private void renderTransitionIndicator(GraphicsContext gc) {
-        // Blinking arrow effect
-        int frame = (int) (System.currentTimeMillis() / 300) % 2;
+    private void renderWarning(GraphicsContext gc) {
+        // Dark overlay for dramatic effect
+        gc.setFill(Color.rgb(0, 0, 0, 0.5));
+        gc.fillRect(0, 0, 800, 600);
 
-        if (frame == 0) {
-            gc.setFill(Color.YELLOW);
+        // Calculate animation progress (0.0 to 1.0)
+        double progress = (double) warningTimer / WARNING_DURATION;
+
+        // Flashing effect (faster as time progresses)
+        int flashInterval = Math.max(10, 60 - warningTimer / 4);
+        int flashFrame = (warningTimer / flashInterval) % 2;
+
+        // Red alert flashing
+        if (flashFrame == 0) {
+            gc.setFill(Color.rgb(255, 0, 0, 0.3));
         } else {
-            gc.setFill(Color.ORANGE);
+            gc.setFill(Color.rgb(200, 0, 0, 0.3));
         }
 
-        gc.setFont(javafx.scene.text.Font.font("Arial", 28));
-        gc.fillText(">>> GO RIGHT >>>", 250, 300);
+        // Flash borders
+        gc.fillRect(0, 0, 800, 30);      // Top
+        gc.fillRect(0, 570, 800, 30);    // Bottom
+        gc.fillRect(0, 0, 30, 600);      // Left
+        gc.fillRect(770, 0, 30, 600);    // Right
 
-        // Draw arrow on right side of screen
-        gc.setFill(Color.LIME);
-        gc.fillPolygon(
-                new double[]{750, 780, 750},  // x coordinates
-                new double[]{280, 300, 320},  // y coordinates
-                3  // number of points
-        );
+        // Main WARNING text
+        gc.setFont(javafx.scene.text.Font.font("Impact", 72));
 
-        gc.setFont(javafx.scene.text.Font.font("Arial", 18));
+        // Pulsing effect
+        double pulse = Math.sin(warningTimer * 0.1) * 0.2 + 1.0;
+        gc.save();
+        gc.translate(400, 250);
+        gc.scale(pulse, pulse);
+
+        // Text shadow
+        gc.setFill(Color.BLACK);
+        gc.fillText("WARNING!", -160, 5);
+
+        // Main text (red with yellow outline)
+        gc.setFill(Color.RED);
+        gc.fillText("WARNING!", -163, 0);
+
+        gc.setStroke(Color.YELLOW);
+        gc.setLineWidth(3);
+        gc.strokeText("WARNING!", -163, 0);
+
+        gc.restore();
+
+        // Subtitle text
+        gc.setFont(javafx.scene.text.Font.font("Arial", 36));
+        gc.setFill(Color.YELLOW);
+        gc.fillText("FINAL BOSS APPROACHING", 200, 350);
+
+        // Countdown or progress indicator
+        int secondsLeft = (WARNING_DURATION - warningTimer) / 60 + 1;
+        gc.setFont(javafx.scene.text.Font.font("Arial", 48));
         gc.setFill(Color.WHITE);
-        gc.fillText("Walk to the right edge to proceed", 220, 330);
-    }
+        gc.fillText(String.valueOf(secondsLeft), 380, 450);
 
+        // Animated danger lines (like in old arcade games)
+        gc.setStroke(Color.rgb(255, 255, 0, 0.7));
+        gc.setLineWidth(3);
+        for (int i = 0; i < 5; i++) {
+            double offset = (warningTimer * 2 + i * 100) % 800;
+            gc.strokeLine(offset, 0, offset - 100, 600);
+            gc.strokeLine(800 - offset, 0, 900 - offset, 600);
+        }
+
+        // Ready message at the end
+        if (progress > 0.8) {
+            int readyFlash = (warningTimer / 10) % 2;
+            if (readyFlash == 0) {
+                gc.setFont(javafx.scene.text.Font.font("Arial", 32));
+                gc.setFill(Color.LIME);
+                gc.fillText("GET READY!", 310, 520);
+            }
+        }
+    }
     /**
      * Normal shoot - single bullet
      */

@@ -12,6 +12,7 @@ public class GameState {
     }
 
     public enum Phase {
+        WARNING,        // ✅ NEW: Warning animation phase (Boss 3 only)
         MINION_WAVE,
         BOSS_FIGHT
     }
@@ -37,7 +38,12 @@ public class GameState {
 
     public void nextBoss() {
         currentBossLevel++;
-        currentPhase = Phase.MINION_WAVE;  // Reset to minion wave for next boss
+
+        if (currentBossLevel == 3) {
+            currentPhase = Phase.WARNING;
+        } else {
+            currentPhase = Phase.MINION_WAVE;  // Reset to minion wave for other bosses
+        }
     }
 
     public int getCurrentBossLevel() {

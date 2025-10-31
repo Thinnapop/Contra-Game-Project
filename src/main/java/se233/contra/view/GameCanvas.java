@@ -66,7 +66,6 @@ public class GameCanvas {
     private void update() {
         gameController.update();
 
-        // ✅ Check if boss level changed and update background
         int newBossLevel = gameController.getCurrentBossLevel();
         if (newBossLevel != currentBossLevel) {
             currentBossLevel = newBossLevel;
@@ -95,11 +94,10 @@ public class GameCanvas {
                     backgroundPath = "/backgrounds/BossStage1.png";
                     break;
                 case 2:
-                    // Use the alien boss background you uploaded
-                    backgroundPath = "/backgrounds/BossStage2.png";  // Put your alien boss image here
+                    backgroundPath = "/backgrounds/BossStage2.png";
                     break;
                 case 3:
-                    backgroundPath = "/backgrounds/BossStage3.png";
+                    backgroundPath = "/backgrounds/stage3.png";
                     break;
                 default:
                     backgroundPath = "/backgrounds/BossStage1.png";
