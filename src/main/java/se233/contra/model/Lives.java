@@ -6,7 +6,7 @@ public class Lives {
     private int remainingLives;
 
     public Lives() {
-        this.remainingLives = 3;
+        this.remainingLives = 999;
     }
 
     public void loseLife() {

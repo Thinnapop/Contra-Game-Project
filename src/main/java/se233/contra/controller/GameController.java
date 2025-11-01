@@ -29,6 +29,8 @@ public class GameController {
 
     private MinionSpawner minionSpawner;
     private boolean bossSpawned;
+
+    // ✅ WARNING ANIMATION SYSTEM (for Boss 3)
     private int warningTimer;
     private static final int WARNING_DURATION = 240; // 4 seconds (60 FPS × 4)
     private boolean warningComplete;
@@ -68,12 +70,7 @@ public class GameController {
 
     private void createPlatformsBoss2() {
         platforms.clear();
-        platforms.add(new Platform(50, 470, 800, 60));
-    }
-
-    private void createPlatformsBoss3() {
-        platforms.clear();
-        platforms.add(new Platform(50, 480, 800, 60));
+        platforms.add(new Platform(50, 500, 800, 60));
     }
 
     private void startMinionWave(int bossLevel) {
@@ -89,50 +86,69 @@ public class GameController {
             return;
         }
 
-        player.update();
-        player.checkPlatformCollision(platforms);
+        // ✅ Check if time stop is active (Boss 3 skill)
+        boolean timeStopActive = false;
+        if (currentBoss instanceof CustomBoss) {
+            CustomBoss customBoss = (CustomBoss) currentBoss;
+            timeStopActive = customBoss.isTimeStopActive();
+        }
+
+        // ✅ Only update player if time stop is NOT active
+        if (!timeStopActive) {
+            player.update();
+            player.checkPlatformCollision(platforms);
+        }
 
         // ✅ Handle different game phases
         if (gameState.getCurrentPhase() == GameState.Phase.WARNING) {
             updateWarningPhase();
         } else if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE) {
-            updateMinionPhase();
+            // ✅ Only update minion phase if time stop is NOT active
+            if (!timeStopActive) {
+                updateMinionPhase();
+            }
         } else if (gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
-            updateBossPhase();
+            updateBossPhase(); // Boss always updates (including during time stop)
         }
 
-        // Update bullets
-        playerBullets.forEach(Bullet::update);
-        enemyBullets.forEach(EnemyBullet::update);
-        minions.forEach(Minion::update);
-        hitEffects.forEach(HitEffect::update);
+        // ✅ Only update bullets, minions, and effects if time stop is NOT active
+        if (!timeStopActive) {
+            playerBullets.forEach(Bullet::update);
+            enemyBullets.forEach(EnemyBullet::update);
+            minions.forEach(Minion::update);
+            hitEffects.forEach(HitEffect::update);
 
-        if (crackWall != null && crackWall.hasCollision() && player.intersects(crackWall)) {
-            lives.loseLife();
-            player.respawn();
-            GameLogger.warn("Player hit the wall!");
+            if (crackWall != null && crackWall.hasCollision() && player.intersects(crackWall)) {
+                lives.loseLife();
+                player.respawn();
+                GameLogger.warn("Player hit the wall!");
+            }
+
+            if (currentBoss != null) {
+                collisionController.checkCollisions(
+                        player, currentBoss, playerBullets,
+                        enemyBullets, minions, hitEffects,
+                        score, lives
+                );
+            } else {
+                checkMinionCollisions();
+            }
+
+            playerBullets.removeIf(b -> !b.isActive());
+            enemyBullets.removeIf(b -> !b.isActive());
+            minions.removeIf(m -> !m.isActive());
+            hitEffects.removeIf(e -> e.isFinished());
         }
-
-        if (currentBoss != null) {
-            collisionController.checkCollisions(
-                    player, currentBoss, playerBullets,
-                    enemyBullets, minions, hitEffects,
-                    score, lives
-            );
-        } else {
-            checkMinionCollisions();
-        }
-
-        playerBullets.removeIf(b -> !b.isActive());
-        enemyBullets.removeIf(b -> !b.isActive());
-        minions.removeIf(m -> !m.isActive());
-        hitEffects.removeIf(e -> e.isFinished());
 
         if (!lives.hasLivesLeft()) {
             gameState.setState(GameState.State.GAME_OVER);
         }
     }
 
+    /**
+     * ✅ Handle WARNING phase (Boss 3 only)
+     * Displays dramatic warning animation for 4 seconds before minions spawn
+     */
     private void updateWarningPhase() {
         warningTimer++;
 
@@ -282,6 +298,9 @@ public class GameController {
     }
 
     public void render(GraphicsContext gc) {
+        // ✅ Render custom boss background if available (Boss 3)
+        renderBossBackground(gc);
+
         if (crackWall != null) {
             crackWall.render(gc);
         }
@@ -307,6 +326,58 @@ public class GameController {
         HUD hud = new HUD(score, lives);
         hud.render(gc);
 
+
+
+        // ✅ Render grey screen overlay during time stop
+       renderTimeStopOverlay(gc);
+    }
+
+    /**
+     * ✅ Render custom boss background if the boss supports it
+     */
+    private void renderBossBackground(GraphicsContext gc) {
+        if (currentBoss instanceof CustomBoss) {
+            CustomBoss customBoss = (CustomBoss) currentBoss;
+            if (customBoss.hasCustomBackground()) {
+                customBoss.renderBackground(gc);
+            }
+        }
+    }
+
+    /**
+     * ✅ Render grey screen overlay during time stop
+     */
+    private void renderTimeStopOverlay(GraphicsContext gc) {
+        if (currentBoss instanceof CustomBoss) {
+            CustomBoss customBoss = (CustomBoss) currentBoss;
+            if (customBoss.isTimeStopActive()) {
+                // ✅ Use setGlobalAlpha for reliable transparency
+                gc.setGlobalAlpha(0.6); // 60% opacity
+                gc.setFill(Color.rgb(30, 30, 30)); // Dark grey
+                gc.fillRect(0, 0, 800, 600);
+                gc.setGlobalAlpha(1.0); // Reset to full opacity
+
+                // Draw TIME STOP text in center
+                gc.setFill(Color.rgb(200, 0, 255)); // Bright purple
+                gc.setFont(javafx.scene.text.Font.font("Impact", 60));
+                //gc.fillText("TIME STOP!", 260, 290);
+
+                // Add glow effect for text
+                gc.setStroke(Color.rgb(255, 0, 255)); // Magenta glow
+                gc.setLineWidth(3);
+                //gc.strokeText("TIME STOP!", 260, 290);
+
+                gc.setFill(Color.CYAN);
+                gc.setFont(javafx.scene.text.Font.font("Arial", 28));
+                //gc.fillText("Everything is frozen!", 250, 340);
+
+                // Add timer countdown
+                int secondsLeft = (customBoss.getTimeStopDuration() / 60) + 1;
+                //gc.setFill(Color.YELLOW);
+                //gc.setFont(javafx.scene.text.Font.font("Impact", 40));
+                //gc.fillText(String.valueOf(secondsLeft), 380, 400);
+            }
+        }
     }
 
     private void renderWaveInfo(GraphicsContext gc) {
@@ -403,9 +474,7 @@ public class GameController {
             }
         }
     }
-    /**
-     * Normal shoot - single bullet
-     */
+
     public void shoot() {
         Bullet bullet = player.shoot();
         if (bullet != null) {
