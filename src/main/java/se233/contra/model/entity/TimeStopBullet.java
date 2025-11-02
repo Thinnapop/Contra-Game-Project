@@ -3,11 +3,6 @@ package se233.contra.model.entity;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-/**
- * ✅ TIME-STOP-PROOF BULLET
- * This bullet fired by CustomBoss continues to move even during time stop
- * Aims at player when fired, then travels in straight line
- */
 public class TimeStopBullet extends EnemyBullet {
     private int lifetime;
 
@@ -34,7 +29,7 @@ public class TimeStopBullet extends EnemyBullet {
     @Override
     public void render(GraphicsContext gc) {
         if (active) {
-            // ✅ Render as a distinctive purple/magenta bullet
+            // Render as a distinctive purple/magenta bullet
 
             // Outer glow (pulsing effect)
             double pulseSize = Math.sin(lifetime * 0.2) * 2 + 6;

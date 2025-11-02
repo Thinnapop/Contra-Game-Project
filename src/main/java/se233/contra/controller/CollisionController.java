@@ -15,7 +15,7 @@ public class CollisionController {
             List<Bullet> playerBullets,
             List<EnemyBullet> enemyBullets,
             List<Minion> minions,
-            List<HitEffect> hitEffects, // ✅ Add hit effects parameter
+            List<HitEffect> hitEffects,
             Score score,
             Lives lives
     ) {
@@ -24,7 +24,7 @@ public class CollisionController {
             if (bullet.intersects(boss)) {
                 boss.takeDamage(bullet.getDamage());
 
-                // ✅ Spawn hit effect at bullet position
+                //     Spawn hit effect at bullet position
                 hitEffects.add(new HitEffect(bullet.getX(), bullet.getY()));
 
                 bullet.setActive(false);
@@ -38,7 +38,7 @@ public class CollisionController {
                 if (bullet.intersects(minion)) {
                     minion.takeDamage(bullet.getDamage());
 
-                    // ✅ Spawn hit effect at bullet position
+                    //   Spawn hit effect at bullet position
                     hitEffects.add(new HitEffect(bullet.getX(), bullet.getY()));
 
                     bullet.setActive(false);

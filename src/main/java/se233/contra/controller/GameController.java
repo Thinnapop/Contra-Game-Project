@@ -30,7 +30,7 @@ public class GameController {
     private MinionSpawner minionSpawner;
     private boolean bossSpawned;
 
-    // ✅ WARNING ANIMATION SYSTEM (for Boss 3)
+    //   WARNING ANIMATION SYSTEM (for Boss 3)
     private int warningTimer;
     private static final int WARNING_DURATION = 240; // 4 seconds (60 FPS × 4)
     private boolean warningComplete;
@@ -86,24 +86,24 @@ public class GameController {
             return;
         }
 
-        // ✅ Check if time stop is active (Boss 3 skill)
+        //    Check if time stop is active (Boss 3 skill)
         boolean timeStopActive = false;
         if (currentBoss instanceof CustomBoss) {
             CustomBoss customBoss = (CustomBoss) currentBoss;
             timeStopActive = customBoss.isTimeStopActive();
         }
 
-        // ✅ Only update player if time stop is NOT active
+        //     Only update player if time stop is NOT active
         if (!timeStopActive) {
             player.update();
             player.checkPlatformCollision(platforms);
         }
 
-        // ✅ Handle different game phases
+        //      Handle different game phases
         if (gameState.getCurrentPhase() == GameState.Phase.WARNING) {
             updateWarningPhase();
         } else if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE) {
-            // ✅ Only update minion phase if time stop is NOT active
+            //       Only update minion phase if time stop is NOT active
             if (!timeStopActive) {
                 updateMinionPhase();
             }
@@ -111,7 +111,7 @@ public class GameController {
             updateBossPhase(); // Boss always updates (including during time stop)
         }
 
-        // ✅ Only update bullets, minions, and effects if time stop is NOT active
+        //        Only update bullets, minions, and effects if time stop is NOT active
         if (!timeStopActive) {
             playerBullets.forEach(Bullet::update);
             enemyBullets.forEach(EnemyBullet::update);
@@ -140,7 +140,7 @@ public class GameController {
             hitEffects.removeIf(e -> e.isFinished());
         }
 
-        // ✅ ALWAYS check for time-stop-proof bullets (CustomBoss bullets)
+        //         ALWAYS check for time-stop-proof bullets (CustomBoss bullets)
         if (currentBoss instanceof CustomBoss) {
             CustomBoss customBoss = (CustomBoss) currentBoss;
             List<EnemyBullet> bossBullets = customBoss.getBossBullets();
@@ -162,7 +162,7 @@ public class GameController {
     }
 
     /**
-     * ✅ Handle WARNING phase (Boss 3 only)
+     *          Handle WARNING phase (Boss 3 only)
      * Displays dramatic warning animation for 4 seconds before minions spawn
      */
     private void updateWarningPhase() {
@@ -186,11 +186,13 @@ public class GameController {
         }
     }
 
+    // In GameController.java, replace the updateBossPhase() method with this:
+
     private void updateBossPhase() {
         if (currentBoss != null) {
             currentBoss.update();
 
-            // ✅ Check if JavaBoss spawned minions
+            //    Check if JavaBoss spawned minions
             if (currentBoss instanceof JavaBoss) {
                 JavaBoss javaBoss = (JavaBoss) currentBoss;
                 if (javaBoss.hasSpawnedMinions()) {
@@ -200,20 +202,46 @@ public class GameController {
                 }
             }
 
+            //     FIX: Check collisions between player and minions during boss fight
+            for (Minion minion : minions) {
+                if (player.intersects(minion)) {
+                    lives.loseLife();
+                    player.respawn();
+                    minion.setActive(false);
+                    GameLogger.warn("Player collided with JavaBoss minion!");
+                }
+            }
+
+            //      FIX: Check if player bullets hit minions during boss fight
+            for (Bullet bullet : playerBullets) {
+                for (Minion minion : minions) {
+                    if (bullet.intersects(minion)) {
+                        minion.takeDamage(bullet.getDamage());
+                        hitEffects.add(new HitEffect(bullet.getX(), bullet.getY()));
+                        bullet.setActive(false);
+
+                        if (!minion.isActive()) {
+                            score.addScore(minion.getScoreValue());
+                            GameLogger.info("Minion destroyed during boss fight! Score: " + minion.getScoreValue());
+                        }
+                    }
+                }
+            }
+
             if (currentBoss.isDefeated() && !currentBoss.hasAwardedScore()) {
                 score.addScore(currentBoss.getScoreValue());
                 currentBoss.awardScore();
 
                 int currentLevel = gameState.getCurrentBossLevel();
 
-                // ✅ Boss 1: Show crack wall effect
+                //       Boss 1: Show crack wall effect
                 if (currentLevel == 1) {
                     if (crackWall != null && !crackWall.isVisible()) {
                         crackWall.revealCrack();
                     }
                 }
 
-                // ✅ Enable transition for Boss 1 and Boss 2
+                //Enable transition for Boss 1 and Boss 2
                 if (currentLevel == 1 || currentLevel == 2) {
                     canTransition = true;
                     GameLogger.info("Transition enabled! Walk to the right edge to proceed to next boss.");
@@ -222,7 +250,7 @@ public class GameController {
                 GameLogger.info("Boss defeated! Score awarded: " + currentBoss.getScoreValue());
             }
 
-            // ✅ Check if player reaches right edge for transition
+            //   Check if player reaches right edge for transition
             if (canTransition && player.getX() >= 700) {
                 transitionToNextBoss();
             }
@@ -277,7 +305,7 @@ public class GameController {
             player.setY(350);
             player.respawn();
 
-            // ✅ Boss 3: Start with WARNING phase
+            //               Boss 3: Start with WARNING phase
             if (nextLevel == 3) {
                 warningTimer = 0;
                 warningComplete = false;
@@ -308,7 +336,7 @@ public class GameController {
                 break;
             case 3:
                 currentBoss = new CustomBoss(600, 300);
-                // ✅ Set player reference for homing bullets
+                //                Set player reference for homing bullets
                 ((CustomBoss) currentBoss).setPlayer(player);
                 break;
         }
@@ -316,7 +344,7 @@ public class GameController {
     }
 
     public void render(GraphicsContext gc) {
-        // ✅ Render custom boss background if available (Boss 3)
+        //                 Render custom boss background if available (Boss 3)
         renderBossBackground(gc);
 
         if (crackWall != null) {
@@ -328,7 +356,7 @@ public class GameController {
         if (currentBoss != null && gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
             currentBoss.render(gc);
 
-            // ✅ Render CustomBoss bullets (visible even during time stop)
+            //                  Render CustomBoss bullets (visible even during time stop)
             if (currentBoss instanceof CustomBoss) {
                 CustomBoss customBoss = (CustomBoss) currentBoss;
                 List<EnemyBullet> bossBullets = customBoss.getBossBullets();
@@ -341,7 +369,7 @@ public class GameController {
         minions.forEach(m -> m.render(gc));
         hitEffects.forEach(e -> e.render(gc));
 
-        // ✅ Render based on current phase
+        //                   Render based on current phase
         if (gameState.getCurrentPhase() == GameState.Phase.WARNING) {
             renderWarning(gc);
         } else if (gameState.getCurrentPhase() == GameState.Phase.MINION_WAVE && minionSpawner != null) {
@@ -351,12 +379,12 @@ public class GameController {
         HUD hud = new HUD(score, lives);
         hud.render(gc);
 
-        // ✅ Render grey screen overlay during time stop
+        //                    Render grey screen overlay during time stop
         renderTimeStopOverlay(gc);
     }
 
     /**
-     * ✅ Render custom boss background if the boss supports it
+     *                     Render custom boss background if the boss supports it
      */
     private void renderBossBackground(GraphicsContext gc) {
         if (currentBoss instanceof CustomBoss) {
@@ -368,13 +396,13 @@ public class GameController {
     }
 
     /**
-     * ✅ Render grey screen overlay during time stop
+     *                      Render grey screen overlay during time stop
      */
     private void renderTimeStopOverlay(GraphicsContext gc) {
         if (currentBoss instanceof CustomBoss) {
             CustomBoss customBoss = (CustomBoss) currentBoss;
             if (customBoss.isTimeStopActive()) {
-                // ✅ Use setGlobalAlpha for reliable transparency
+                //                       Use setGlobalAlpha for reliable transparency
                 gc.setGlobalAlpha(0.6); // 60% opacity
                 gc.setFill(Color.rgb(30, 30, 30)); // Dark grey
                 gc.fillRect(0, 0, 800, 600);
@@ -416,7 +444,7 @@ public class GameController {
     }
 
     /**
-     * ✅ Render WARNING animation for Boss 3
+     *                        Render WARNING animation for Boss 3
      * Displays dramatic warning with flashing effects
      */
     private void renderWarning(GraphicsContext gc) {
@@ -506,9 +534,6 @@ public class GameController {
         }
     }
 
-    /**
-     * ✅ SPECIAL ATTACK - Spread Shot (3 bullets)
-     */
     public void shootSpecialAttack() {
         List<Bullet> spreadBullets = player.shootSpecialAttack();
         if (spreadBullets != null && !spreadBullets.isEmpty()) {
