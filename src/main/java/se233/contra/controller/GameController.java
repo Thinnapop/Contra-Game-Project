@@ -140,6 +140,22 @@ public class GameController {
             hitEffects.removeIf(e -> e.isFinished());
         }
 
+        // ✅ ALWAYS check for time-stop-proof bullets (CustomBoss bullets)
+        if (currentBoss instanceof CustomBoss) {
+            CustomBoss customBoss = (CustomBoss) currentBoss;
+            List<EnemyBullet> bossBullets = customBoss.getBossBullets();
+
+            // Check collisions with player (even during time stop)
+            for (EnemyBullet bullet : bossBullets) {
+                if (bullet.intersects(player)) {
+                    lives.loseLife();
+                    bullet.setActive(false);
+                    player.respawn();
+                    GameLogger.warn("Player hit by time-stop bullet!");
+                }
+            }
+        }
+
         if (!lives.hasLivesLeft()) {
             gameState.setState(GameState.State.GAME_OVER);
         }
@@ -292,6 +308,8 @@ public class GameController {
                 break;
             case 3:
                 currentBoss = new CustomBoss(600, 300);
+                // ✅ Set player reference for homing bullets
+                ((CustomBoss) currentBoss).setPlayer(player);
                 break;
         }
         GameLogger.info("Loaded Boss " + level);
@@ -309,6 +327,13 @@ public class GameController {
 
         if (currentBoss != null && gameState.getCurrentPhase() == GameState.Phase.BOSS_FIGHT) {
             currentBoss.render(gc);
+
+            // ✅ Render CustomBoss bullets (visible even during time stop)
+            if (currentBoss instanceof CustomBoss) {
+                CustomBoss customBoss = (CustomBoss) currentBoss;
+                List<EnemyBullet> bossBullets = customBoss.getBossBullets();
+                bossBullets.forEach(b -> b.render(gc));
+            }
         }
 
         playerBullets.forEach(b -> b.render(gc));
@@ -326,10 +351,8 @@ public class GameController {
         HUD hud = new HUD(score, lives);
         hud.render(gc);
 
-
-
         // ✅ Render grey screen overlay during time stop
-       renderTimeStopOverlay(gc);
+        renderTimeStopOverlay(gc);
     }
 
     /**

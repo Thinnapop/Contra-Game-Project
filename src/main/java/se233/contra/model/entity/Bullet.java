@@ -12,7 +12,7 @@ public class Bullet extends Entity {
         this.y = y;
         this.width = 8;
         this.height = 8;
-        this.speed = 10;
+        this.speed = 5;
         this.damage = 20;  // ✅ Increased from 5 to 20 for better gameplay
         this.active = true;
         this.velocityX = directionX * speed;

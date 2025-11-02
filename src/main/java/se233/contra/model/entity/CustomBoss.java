@@ -51,6 +51,12 @@ public class CustomBoss extends Boss {
     private double targetX;
     private double targetY;
 
+    // ✅ BULLET FIRING SYSTEM
+    private int shootCooldown;
+    private static final int SHOOT_COOLDOWN = 150; // Fire every 1.5 seconds
+    private List<EnemyBullet> bossBullets;
+    private Character playerReference;
+
     public CustomBoss(double x, double y) {
         this.x = x;
         this.y = y;
@@ -78,6 +84,10 @@ public class CustomBoss extends Boss {
         this.timeStopDuration = 0;
         this.skillCooldown = SKILL_COOLDOWN;
         this.skillActivationTimer = 0;
+
+        // ✅ Initialize bullet system
+        this.shootCooldown = SHOOT_COOLDOWN;
+        this.bossBullets = new ArrayList<>();
 
         // Load animations and background
         loadCustomBackground();
@@ -185,6 +195,48 @@ public class CustomBoss extends Boss {
     public double getTimeStopIntensity() {
         if (!timeStopActive) return 0.0;
         return 0.6; // 60% grey overlay
+    }
+
+    /**
+     * ✅ Get bullets fired by the boss (can be accessed by GameController)
+     */
+    public List<EnemyBullet> getBossBullets() {
+        return bossBullets;
+    }
+
+    /**
+     * ✅ Set player reference for aiming bullets
+     */
+    public void setPlayer(Character player) {
+        this.playerReference = player;
+    }
+
+    /**
+     * ✅ Fire bullet aimed at player's current position
+     * Bullet travels in straight line after being fired
+     */
+    private void fireBullet(Character player) {
+        // Calculate bullet spawn position (center of boss)
+        double bulletX = x + width / 2;
+        double bulletY = y + height / 2;
+
+        // Calculate direction toward player's current position
+        double targetPlayerX = player.getHitboxX() + player.getHitboxWidth() / 2;
+        double targetPlayerY = player.getHitboxY() + player.getHitboxHeight() / 2;
+
+        double dx = targetPlayerX - bulletX;
+        double dy = targetPlayerY - bulletY;
+        double distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Normalize direction
+        double dirX = dx / distance;
+        double dirY = dy / distance;
+
+        // Create time-stop-proof bullet (straight line, no tracking)
+        TimeStopBullet bullet = new TimeStopBullet(bulletX, bulletY, dirX, dirY);
+        bossBullets.add(bullet);
+
+        GameLogger.debug("CustomBoss fired bullet aimed at player!");
     }
 
     @Override
@@ -298,6 +350,21 @@ public class CustomBoss extends Boss {
             return;
         }
 
+        // ✅ Update bullet firing cooldown (ALWAYS updates, even during time stop)
+        if (playerReference != null) {
+            shootCooldown--;
+            if (shootCooldown <= 0) {
+                fireBullet(playerReference);
+                shootCooldown = SHOOT_COOLDOWN;
+            }
+        }
+
+        // ✅ Update bullets (ALWAYS move, even during time stop)
+        for (EnemyBullet bullet : bossBullets) {
+            bullet.update();
+        }
+        bossBullets.removeIf(b -> !b.isActive());
+
         // Update skill cooldown
         if (skillCooldown > 0) {
             skillCooldown--;
@@ -407,8 +474,6 @@ public class CustomBoss extends Boss {
             if (skillCooldown > 0) {
                 renderSkillCooldown(gc);
             }
-
-            // ✅ Draw TIME STOP indicator
         }
     }
 
@@ -494,10 +559,8 @@ public class CustomBoss extends Boss {
         gc.setFill(Color.CYAN);
         gc.fillRect(barX, barY, barWidth * (1 - cooldownPercent), barHeight);
     }
+
     public int getTimeStopDuration() {
         return timeStopDuration;
     }
-
-
-
 }
