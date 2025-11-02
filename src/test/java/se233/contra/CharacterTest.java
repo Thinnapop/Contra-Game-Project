@@ -89,13 +89,13 @@ public class CharacterTest {
 
     @Test
     public void testRespawn() {
-        character.setX(500);
+        character.setX(300);
         character.setY(200);
 
         character.respawn();
 
         assertEquals(100, character.getX(), "Character should respawn at X=100");
-        assertEquals(400, character.getY(), "Character should respawn at Y=400");
+        assertEquals(300, character.getY(), "Character should respawn at Y=400");
     }
 
     @Test

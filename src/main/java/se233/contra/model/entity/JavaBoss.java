@@ -90,25 +90,21 @@ public class JavaBoss extends Boss {
             int frameWidth = 102;
             int frameHeight = 113;
 
-            // ✅ FRAME 0: Idle/Normal Movement
             Image idleFrame = SpriteLoader.extractFrame(spritePath, 0, 0, frameWidth, frameHeight);
             List<Image> idleFrames = new ArrayList<>();
             idleFrames.add(idleFrame);
             idleAnimation = new AnimationManager(idleFrames, 30);
 
-            // ✅ FRAME 1: Summoning (mouth open)
             Image summonFrame = SpriteLoader.extractFrame(spritePath, 1, 0, frameWidth, frameHeight);
             List<Image> summonFrames = new ArrayList<>();
             summonFrames.add(summonFrame);
             summonAnimation = new AnimationManager(summonFrames, 10);
 
-            // ✅ FRAME 2: Death animation
             Image deathFrame = SpriteLoader.extractFrame(spritePath, 2, 0, frameWidth, frameHeight);
             List<Image> deathFrames = new ArrayList<>();
             deathFrames.add(deathFrame);
             deathAnimation = new AnimationManager(deathFrames, 20);
 
-            // Start with idle animation
             currentAnimation = idleAnimation;
 
             GameLogger.info("Java Boss animations loaded: idle, summon, death");
