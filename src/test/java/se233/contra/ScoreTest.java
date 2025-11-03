@@ -18,8 +18,7 @@ public class ScoreTest {
 
     @Test
     public void testScoreInitialValue() {
-        assertEquals(0, score.getCurrentScore(),
-                "Score should start at 0");
+        assertEquals(0, score.getCurrentScore(), "Score should start at 0");
     }
 
     @Test
@@ -39,11 +38,9 @@ public class ScoreTest {
 
     @Test
     public void testMinionScoring() {
-        // Regular minion: 1 point
         score.addScore(1);
         assertEquals(1, score.getCurrentScore(), "Regular minion should give 1 point");
 
-        // Second-tier minion: 2 points
         score.addScore(2);
         assertEquals(3, score.getCurrentScore(), "Second-tier minion should give 2 points");
     }
@@ -57,8 +54,7 @@ public class ScoreTest {
         assertEquals(5, score.getCurrentScore(), "Boss 2 should give 3 points");
 
         score.addScore(5);
-        assertEquals(10, score.getCurrentScore(),
-                "Boss 3 should give 5 points");
+        assertEquals(10, score.getCurrentScore(), "Boss 3 should give 5 points");
     }
 
     @Test
@@ -66,7 +62,6 @@ public class ScoreTest {
         score.addScore(100);
         score.reset();
 
-        assertEquals(0, score.getCurrentScore(),
-                "Score should reset to 0");
+        assertEquals(0, score.getCurrentScore(), "Score should reset to 0");
     }
 }

@@ -36688,3 +36688,261 @@ java.lang.NullPointerException: Input stream must not be null
 10:37:06.522 [JavaFX Application Thread] INFO  ContraGame - Character respawned
 10:37:06.522 [JavaFX Application Thread] WARN  ContraGame - Player hit by time-stop bullet!
 10:37:08.864 [JavaFX Application Thread] INFO  ContraGame - === Contra Boss Fight Stopping ===
+11:43:31.740 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.872 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/character/character.png
+11:43:31.874 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.876 [main] INFO  ContraGame - Extracted 5 frames from row 0
+11:43:31.876 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.877 [main] INFO  ContraGame - Extracted 4 frames from row 1
+11:43:31.877 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.877 [main] INFO  ContraGame - Extracted 2 frames from row 0
+11:43:31.877 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.877 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.878 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.879 [main] WARN  ContraGame - Character lost a life. Remaining: 2
+11:43:31.883 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.883 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.883 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.883 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.883 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.883 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.883 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.884 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.884 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.884 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.884 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.884 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.884 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.884 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.886 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.886 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.886 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.886 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.886 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.886 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.886 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.887 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.887 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.887 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.887 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.887 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.887 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.887 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.891 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/explode.png
+11:43:31.891 [main] INFO  ContraGame - Extracted 4 frames from row 0
+11:43:31.891 [main] INFO  ContraGame - Explosion animation loaded: 4 frames (3 loops max)
+11:43:31.896 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.897 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.897 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.897 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.897 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.897 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.897 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.897 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.898 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.898 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.898 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.898 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.898 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.898 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.898 [main] INFO  ContraGame - Character respawned
+11:43:31.899 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.899 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.899 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.899 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.899 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.899 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.899 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.900 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.900 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.900 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.900 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.900 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.900 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.900 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.901 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.901 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.901 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.901 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.901 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.901 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.901 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:43:31.902 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:43:31.902 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:43:31.902 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:43:31.902 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:43:31.902 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:43:31.902 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:43:31.902 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.490 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.641 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/character/character.png
+11:48:19.642 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.644 [main] INFO  ContraGame - Extracted 5 frames from row 0
+11:48:19.645 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.645 [main] INFO  ContraGame - Extracted 4 frames from row 1
+11:48:19.645 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.645 [main] INFO  ContraGame - Extracted 2 frames from row 0
+11:48:19.645 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.645 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.646 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.646 [main] WARN  ContraGame - Character lost a life. Remaining: 2
+11:48:19.651 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.651 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.651 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.651 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.651 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.651 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.651 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.652 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.652 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.652 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.652 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.652 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.652 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.652 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.654 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.654 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.654 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.654 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.654 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.654 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.654 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.654 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.654 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.654 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.654 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.654 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.654 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.655 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.661 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/explode.png
+11:48:19.661 [main] INFO  ContraGame - Extracted 4 frames from row 0
+11:48:19.661 [main] INFO  ContraGame - Explosion animation loaded: 4 frames (3 loops max)
+11:48:19.662 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.662 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.662 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.662 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.662 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.662 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.662 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.663 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.663 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.663 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.663 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.663 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.663 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.663 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.663 [main] INFO  ContraGame - Character respawned
+11:48:19.664 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.664 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.664 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.664 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.664 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.664 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.664 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.665 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.665 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.665 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.665 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.665 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.665 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.665 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.666 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.666 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.666 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.666 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.666 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.666 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.666 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:19.667 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:19.667 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:19.667 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:19.667 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:19.667 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:19.667 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:19.667 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:35.899 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.004 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/character/character.png
+11:48:36.005 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.007 [main] INFO  ContraGame - Extracted 5 frames from row 0
+11:48:36.007 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.007 [main] INFO  ContraGame - Extracted 4 frames from row 1
+11:48:36.007 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.008 [main] INFO  ContraGame - Extracted 2 frames from row 0
+11:48:36.008 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.008 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.008 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.009 [main] WARN  ContraGame - Character lost a life. Remaining: 2
+11:48:36.013 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.013 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.013 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.013 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.014 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.014 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.014 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.014 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.015 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.015 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.015 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.015 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.015 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.015 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.016 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.016 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.016 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.016 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.016 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.016 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.016 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.017 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.017 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.017 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.017 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.017 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.017 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.017 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.021 [main] INFO  ContraGame - Loaded sprite: /se233/sprites/effects/explode.png
+11:48:36.021 [main] INFO  ContraGame - Extracted 4 frames from row 0
+11:48:36.021 [main] INFO  ContraGame - Explosion animation loaded: 4 frames (3 loops max)
+11:48:36.022 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.022 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.022 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.022 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.022 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.022 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.022 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.023 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.023 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.023 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.023 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.023 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.023 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.023 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.023 [main] INFO  ContraGame - Character respawned
+11:48:36.024 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.024 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.024 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.024 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.024 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.024 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.024 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.025 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.025 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.025 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.025 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.025 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.025 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.025 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.025 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.025 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.025 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.025 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.025 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.025 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.025 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)
+11:48:36.026 [main] INFO  ContraGame - Loading character sprite sheet from: /se233/sprites/character/character.png
+11:48:36.026 [main] INFO  ContraGame - Idle animation loaded: 1 frame
+11:48:36.026 [main] INFO  ContraGame - Run animation loaded: 5 frames
+11:48:36.026 [main] INFO  ContraGame - Jump animation loaded (using idle frame): 1 frame
+11:48:36.026 [main] INFO  ContraGame - Prone animation loaded: 2 frames
+11:48:36.026 [main] INFO  ContraGame - Character animations loaded. Total animations: 4
+11:48:36.026 [main] INFO  ContraGame - Character created at position: (100.0, 400.0)

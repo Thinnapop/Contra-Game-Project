@@ -74,22 +74,15 @@ public class CustomBoss extends Boss {
         this.movementDuration = 120; // 2 seconds per movement
         this.targetX = x;
         this.targetY = y;
-
-        //   Initialize state machine
         this.currentState = BossState.STANDSTILL;
         this.previousState = BossState.STANDSTILL;
-
-        //   Initialize time stop skill
         this.timeStopActive = false;
         this.timeStopDuration = 0;
         this.skillCooldown = SKILL_COOLDOWN;
         this.skillActivationTimer = 0;
-
-        //   Initialize bullet system
         this.shootCooldown = SHOOT_COOLDOWN;
         this.bossBullets = new ArrayList<>();
 
-        // Load animations and background
         loadCustomBackground();
         loadAnimations();
     }

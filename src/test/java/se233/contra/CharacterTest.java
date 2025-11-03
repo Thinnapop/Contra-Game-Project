@@ -2,16 +2,13 @@ package se233.contra;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import se233.contra.model.entity.Boss;
 import se233.contra.model.entity.Character;
 import se233.contra.model.entity.Bullet;
+import se233.contra.model.entity.DefenseWallBoss;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Essential unit tests for Character
- * Tests movements and actions
- * Required for rubric: Testing 2/2 points
- */
 public class CharacterTest {
 
     private Character character;
@@ -100,16 +97,27 @@ public class CharacterTest {
 
     @Test
     public void testCharacterInitialLives() {
-        assertEquals(3, character.getLives(),
-                "Character should start with 3 lives");
+        assertEquals(3, character.getLives(), "Character should start with 3 lives");
     }
 
     @Test
     public void testLoseLife() {
         int initialLives = character.getLives();
         character.loseLife();
-
-        assertEquals(initialLives - 1, character.getLives(),
-                "Character should lose 1 life");
+        assertEquals(initialLives - 1, character.getLives(), "Character should lose 1 life");
+    }
+    @Test
+    public void testPlayerBulletHitsBoss() {
+        Boss boss = new DefenseWallBoss(0, 0);
+        int initialBossHealth = boss.getHealth();
+        double bossX = boss.getX();
+        double bossY = boss.getY();
+        double bulletX = bossX + boss.getWidth() / 2;
+        double bulletY = bossY + boss.getHeight() / 2;
+        Bullet bullet = new Bullet(bulletX, bulletY, 1, 0);
+        assertTrue(bullet.intersects(boss), "Bullet should intersect with boss");
+        boss.takeDamage(bullet.getDamage());
+        assertTrue(boss.getHealth() < initialBossHealth, "Boss health should decrease after bullet hit");
+        assertEquals(initialBossHealth - 20, boss.getHealth(), "Boss should have lost 20 HP");
     }
 }
