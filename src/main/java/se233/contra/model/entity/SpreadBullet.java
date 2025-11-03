@@ -10,14 +10,6 @@ import javafx.scene.paint.Color;
 public class SpreadBullet extends Bullet {
     private double angle; // Angle of spread
 
-    /**
-     * Create a spread bullet
-     * @param x Starting X position
-     * @param y Starting Y position
-     * @param directionX Base direction X (-1 or 1)
-     * @param directionY Base direction Y
-     * @param spreadAngle Angle offset in degrees (-30, 0, +30 for 3-bullet spread)
-     */
     public SpreadBullet(double x, double y, double directionX, double directionY, double spreadAngle) {
         super(x, y, directionX, directionY);
 

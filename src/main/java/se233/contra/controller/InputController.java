@@ -59,6 +59,7 @@ public class InputController {
         // Handle crouch/prone
         if (crouching) {
             player.prone();
+            player.stopMoving();
         }
 
         // ✅ Handle special attack (priority over normal shoot)

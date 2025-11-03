@@ -54,14 +54,7 @@ public class DefenseWallBoss extends Boss {
             int frameHeight = 196;
             int frameCount = 4;
 
-            List<Image> explosionFrames = SpriteLoader.extractFramesFromRow(
-                    explosionPath,
-                    0,
-                    0,
-                    frameCount,
-                    frameWidth,
-                    frameHeight
-            );
+            List<Image> explosionFrames = SpriteLoader.extractFramesFromRow(explosionPath, 0, 0, frameCount, frameWidth, frameHeight);
 
             if (explosionFrames != null && !explosionFrames.isEmpty()) {
                 explosionAnimation = new AnimationManager(explosionFrames, 8, 3);

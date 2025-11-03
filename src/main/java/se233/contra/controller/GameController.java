@@ -70,7 +70,7 @@ public class GameController {
 
     private void createPlatformsBoss2() {
         platforms.clear();
-        platforms.add(new Platform(50, 500, 800, 60));
+        platforms.add(new Platform(0, 480, 800, 60));
     }
 
     private void startMinionWave(int bossLevel) {

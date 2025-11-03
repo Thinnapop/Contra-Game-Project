@@ -15,11 +15,11 @@ public class CustomBoss extends Boss {
     private int attackCooldown;
     private int attackTimer;
 
-    // ✅ CUSTOM BACKGROUND SYSTEM
+    //   CUSTOM BACKGROUND SYSTEM
     private Image customBackground;
     private boolean hasCustomBackground;
 
-    // ✅ ANIMATION SYSTEM
+    //   ANIMATION SYSTEM
     private AnimationManager standstillAnimation;
     private AnimationManager forwardAnimation;
     private AnimationManager backwardAnimation;
@@ -51,7 +51,7 @@ public class CustomBoss extends Boss {
     private double targetX;
     private double targetY;
 
-    // ✅ BULLET FIRING SYSTEM
+    //   BULLET FIRING SYSTEM
     private int shootCooldown;
     private static final int SHOOT_COOLDOWN = 150; // Fire every 1.5 seconds
     private List<EnemyBullet> bossBullets;
@@ -75,17 +75,17 @@ public class CustomBoss extends Boss {
         this.targetX = x;
         this.targetY = y;
 
-        // ✅ Initialize state machine
+        //   Initialize state machine
         this.currentState = BossState.STANDSTILL;
         this.previousState = BossState.STANDSTILL;
 
-        // ✅ Initialize time stop skill
+        //   Initialize time stop skill
         this.timeStopActive = false;
         this.timeStopDuration = 0;
         this.skillCooldown = SKILL_COOLDOWN;
         this.skillActivationTimer = 0;
 
-        // ✅ Initialize bullet system
+        //   Initialize bullet system
         this.shootCooldown = SHOOT_COOLDOWN;
         this.bossBullets = new ArrayList<>();
 
@@ -94,9 +94,6 @@ public class CustomBoss extends Boss {
         loadAnimations();
     }
 
-    /**
-     * ✅ Load the custom background for Boss 3
-     */
     private void loadCustomBackground() {
         try {
             String backgroundPath = "/backgrounds/BossStage3.png";
@@ -109,16 +106,13 @@ public class CustomBoss extends Boss {
         }
     }
 
-    /**
-     * ✅ Load sprite sheet animations
-     */
     private void loadAnimations() {
         try {
             String spritePath = "/se233/sprites/bosses/CustomBoss.png";
             int frameWidth = 160;
             int frameHeight = 166;
 
-            // ✅ ANIMATION 0: Standstill (idle)
+            //   ANIMATION 0: Standstill (idle)
             List<Image> standstillFrames = SpriteLoader.extractFramesFromRow(
                     spritePath, 0, 0, 4, frameWidth, frameHeight
             );
@@ -127,7 +121,7 @@ public class CustomBoss extends Boss {
                 GameLogger.info("CustomBoss: Loaded standstill animation (" + standstillFrames.size() + " frames)");
             }
 
-            // ✅ ANIMATION 1: Go Forward
+            //   ANIMATION 1: Go Forward
             List<Image> forwardFrames = SpriteLoader.extractFramesFromRow(
                     spritePath, 1, 0, 4, frameWidth, frameHeight
             );
@@ -136,7 +130,7 @@ public class CustomBoss extends Boss {
                 GameLogger.info("CustomBoss: Loaded forward animation (" + forwardFrames.size() + " frames)");
             }
 
-            // ✅ ANIMATION 2: Go Backward
+            //   ANIMATION 2: Go Backward
             List<Image> backwardFrames = SpriteLoader.extractFramesFromRow(
                     spritePath, 2, 0, 4, frameWidth, frameHeight
             );
@@ -166,55 +160,40 @@ public class CustomBoss extends Boss {
         return hasCustomBackground && customBackground != null;
     }
 
-    /**
-     * ✅ Get the custom background image
-     */
+
     public Image getCustomBackground() {
         return customBackground;
     }
 
-    /**
-     * ✅ Render the custom background
-     */
     public void renderBackground(GraphicsContext gc) {
         if (hasCustomBackground && customBackground != null) {
             gc.drawImage(customBackground, 0, 0, 800, 600);
         }
     }
 
-    /**
-     * ✅ Check if time stop is active
-     */
     public boolean isTimeStopActive() {
         return timeStopActive;
     }
 
-    /**
-     * ✅ Get time stop progress (for grey screen effect)
-     */
+
     public double getTimeStopIntensity() {
         if (!timeStopActive) return 0.0;
         return 0.6; // 60% grey overlay
     }
 
-    /**
-     * ✅ Get bullets fired by the boss (can be accessed by GameController)
-     */
     public List<EnemyBullet> getBossBullets() {
         return bossBullets;
     }
 
-    /**
-     * ✅ Set player reference for aiming bullets
-     */
+    //Set player reference for aiming bullets
+
     public void setPlayer(Character player) {
         this.playerReference = player;
     }
 
-    /**
-     * ✅ Fire bullet aimed at player's current position
-     * Bullet travels in straight line after being fired
-     */
+      //Fire bullet aimed at player's current position
+    //Bullet travels in straight line after being fired
+
     private void fireBullet(Character player) {
         // Calculate bullet spawn position (center of boss)
         double bulletX = x + width / 2;
@@ -248,7 +227,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Activate the time stop skill
+     *   Activate the time stop skill
      */
     private void activateTimeStopSkill() {
         previousState = currentState;
@@ -310,7 +289,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Choose new movement direction
+     *   Choose new movement direction
      */
     private void chooseNewMovement() {
         int choice = (int) (Math.random() * 3);
@@ -350,7 +329,7 @@ public class CustomBoss extends Boss {
             return;
         }
 
-        // ✅ Update bullet firing cooldown (ALWAYS updates, even during time stop)
+        //   Update bullet firing cooldown (ALWAYS updates, even during time stop)
         if (playerReference != null) {
             shootCooldown--;
             if (shootCooldown <= 0) {
@@ -359,7 +338,7 @@ public class CustomBoss extends Boss {
             }
         }
 
-        // ✅ Update bullets (ALWAYS move, even during time stop)
+        //   Update bullets (ALWAYS move, even during time stop)
         for (EnemyBullet bullet : bossBullets) {
             bullet.update();
         }
@@ -401,7 +380,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Update skill state (time stop)
+     *   Update skill state (time stop)
      */
     private void updateSkillState() {
         skillActivationTimer++;
@@ -470,7 +449,7 @@ public class CustomBoss extends Boss {
             gc.setFill(Color.YELLOW);
             //gc.fillText("FINAL BOSS", x + 30, y - 20);
 
-            // ✅ Draw skill cooldown indicator
+            //   Draw skill cooldown indicator
             if (skillCooldown > 0) {
                 renderSkillCooldown(gc);
             }
@@ -478,7 +457,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Fallback rendering if animations don't load
+     *   Fallback rendering if animations don't load
      */
     private void renderFallback(GraphicsContext gc) {
         // Outer glow effect
@@ -514,7 +493,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Render health bar
+     *   Render health bar
      */
     private void renderHealthBar(GraphicsContext gc) {
         double healthBarWidth = width * ((double) health / maxHealth);
@@ -538,7 +517,7 @@ public class CustomBoss extends Boss {
     }
 
     /**
-     * ✅ Render skill cooldown indicator
+     *   Render skill cooldown indicator
      */
     private void renderSkillCooldown(GraphicsContext gc) {
         double cooldownPercent = (double) skillCooldown / SKILL_COOLDOWN;
